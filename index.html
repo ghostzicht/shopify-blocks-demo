@@ -1,334 +1,221 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Shopify Sections - Inspired by Germany's top D2C brands</title>
+    <title>ShopBlocks - Premium Shopify Sections</title>
     <style>
+        /* ===== RESET & GLOBAL ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
+        :root {
+            --bg-white: #FFFFFF;
+            --bg-alt: #F8F8F8;
+            --text-primary: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --accent: #E63946;
+            --black: #000000;
+            --section-padding-mobile: 48px;
+            --section-padding-desktop: 80px;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #1d1d1f;
-            background-color: #ffffff;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Global text overflow prevention */
-        * {
-            word-wrap: break-word;
-            overflow-wrap: break-word;
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+            line-height: 1.5;
+            color: var(--text-primary);
+            background: var(--bg-white);
+            overflow-x: hidden;
         }
 
         /* ===== MOBILE HEADER ===== */
-        .mobile-header {
+        .header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: #ffffff;
-            border-bottom: 1px solid #e0e0e0;
-            padding: 16px 24px;
+            background: var(--bg-white);
+            padding: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            height: 60px;
+            border-bottom: 1px solid #e5e5e7;
         }
 
-        .logo-text {
-            font-size: 20px;
+        .logo {
+            font-size: 18px;
             font-weight: 700;
-            color: #000000;
+            color: var(--black);
         }
 
-        .hamburger-menu {
+        .hamburger {
             width: 24px;
             height: 18px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            cursor: pointer;
         }
 
-        .hamburger-menu span {
+        .hamburger span {
             width: 100%;
             height: 2px;
-            background: #000000;
-            border-radius: 2px;
+            background: var(--black);
+            border-radius: 1px;
         }
 
         /* ===== HERO SECTION ===== */
         .hero {
-            padding: 180px 0 40px;
+            padding: 80px 16px 48px;
             text-align: center;
-            background: #ffffff;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
+            background: var(--bg-white);
         }
 
         .hero h1 {
-            font-size: clamp(3.5rem, 6vw, 5.5rem);
+            font-size: 36px;
             font-weight: 700;
-            margin-bottom: 24px;
-            color: #000000;
-            letter-spacing: -0.03em;
+            margin-bottom: 16px;
             line-height: 1.1;
+            color: var(--black);
         }
 
         .hero-subtitle {
-            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-            color: #6e6e73;
-            max-width: 700px;
-            margin: 0 auto 24px;
-            font-weight: 400;
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
             line-height: 1.4;
         }
 
         .hero-social-proof {
-            font-size: 1rem;
-            color: #86868b;
-            margin-bottom: 60px;
-            font-weight: 500;
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
         }
 
         .hero-cta {
-            background: #000000;
+            background: var(--black);
             color: white;
-            padding: 14px 24px;
+            padding: 14px 28px;
             border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
+            border-radius: 8px;
+            font-size: 16px;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            position: relative;
-            overflow: hidden;
+            transition: opacity 0.2s;
         }
 
         .hero-cta:hover {
-            background: #1d1d1f;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-cta:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.6s;
-        }
-
-        .hero-cta:hover:before {
-            left: 100%;
+            opacity: 0.9;
         }
 
         /* ===== SECTION LAYOUT ===== */
         .section {
-            padding: 80px 0;
-            position: relative;
-            overflow: hidden;
+            padding: var(--section-padding-mobile) 16px;
         }
 
         .section:nth-child(even) {
-            background: #f8f8f8;
+            background: var(--bg-alt);
         }
 
-        .section:nth-child(odd) {
-            background: #ffffff;
-        }
-
-        .section-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section:nth-child(even) .section-content {
-            direction: rtl;
-        }
-
-        .section:nth-child(even) .section-info,
-        .section:nth-child(even) .section-demo {
-            direction: ltr;
-        }
-
-        .section-info {
-            padding: 40px 0;
-        }
-
-        .section-info h2 {
-            font-size: clamp(2.5rem, 4vw, 3.5rem);
-            font-weight: 700;
+        .section-header {
             margin-bottom: 24px;
-            color: #000000;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
         }
 
-        .section-info p {
-            font-size: 1.2rem;
-            color: #6e6e73;
-            margin-bottom: 32px;
-            line-height: 1.5;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
+        .inspired-by {
+            background: #e5e5e7;
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--black);
+        }
+
+        .section-description {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.4;
         }
 
         .features {
             list-style: none;
-            margin-bottom: 40px;
+            margin-bottom: 24px;
         }
 
         .features li {
-            padding: 12px 0;
-            color: #1d1d1f;
+            padding: 6px 0;
+            font-size: 15px;
+            color: var(--text-primary);
             position: relative;
-            padding-left: 32px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
+            padding-left: 20px;
         }
 
         .features li:before {
             content: "✓";
             position: absolute;
             left: 0;
-            color: #E63946;
+            color: var(--accent);
             font-weight: 700;
-            font-size: 1.2rem;
         }
 
-        .inspired-tag {
-            background: #F0F0F0;
-            color: #666;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        /* ===== DEMO CONTAINERS ===== */
-        .demo-container {
-            background: #ffffff;
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            position: relative;
-        }
-
-        .phone-mockup {
-            max-width: 320px;
-            margin: 0 auto;
-            background: #000000;
-            border-radius: 32px;
-            padding: 8px;
-            position: relative;
-        }
-
-        .phone-screen {
-            background: #ffffff;
-            border-radius: 24px;
-            overflow: hidden;
-            height: 600px;
-            position: relative;
-        }
-
-        .browser-mockup {
-            background: #f5f5f7;
-            border-radius: 12px;
-            padding: 12px;
-            position: relative;
-        }
-
-        .browser-bar {
-            background: #ffffff;
-            height: 40px;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            padding: 0 16px;
-            gap: 8px;
-        }
-
-        .browser-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #c0c0c0;
-        }
-
-        .browser-content {
-            background: #ffffff;
-            border-radius: 8px;
-            min-height: 300px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* ===== BLOCK 1: ANNOUNCEMENT BAR PRO ===== */
-        .announcement-bar {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        .section-cta {
+            background: var(--accent);
             color: white;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            display: inline-block;
+            text-decoration: none;
         }
 
-        .announcement-content {
+        /* ===== LIVE PREVIEWS ===== */
+        .live-preview {
+            background: var(--bg-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===== BLOCK 1: ANNOUNCEMENT BAR ===== */
+        .announcement-bar {
+            background: var(--black);
+            color: white;
+            padding: 12px 16px;
             text-align: center;
             font-size: 14px;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .announcement-text {
             opacity: 0;
             animation: fadeInOut 9s infinite;
+            position: absolute;
+            top: 12px;
+            left: 0;
+            right: 0;
         }
 
-        .announcement-content:nth-child(1) { animation-delay: 0s; }
-        .announcement-content:nth-child(2) { animation-delay: 3s; }
-        .announcement-content:nth-child(3) { animation-delay: 6s; }
-
-        .countdown-inline {
-            color: #E63946;
-            font-weight: 700;
-            margin-left: 8px;
-        }
+        .announcement-text:nth-child(1) { animation-delay: 0s; }
+        .announcement-text:nth-child(2) { animation-delay: 3s; }
+        .announcement-text:nth-child(3) { animation-delay: 6s; }
 
         @keyframes fadeInOut {
             0%, 20% { opacity: 0; }
@@ -337,292 +224,213 @@
         }
 
         /* ===== BLOCK 2: PRODUCT CAROUSEL ===== */
+        .product-carousel-container {
+            padding: 20px;
+        }
+
         .product-carousel {
             display: flex;
-            gap: 20px;
-            padding: 20px 20px 20px 20px;
-            padding-right: calc(20px + 180px); /* Show ~20% of next card */
+            gap: 16px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
+            padding: 0 0 8px 0;
         }
 
         .product-carousel::-webkit-scrollbar {
-            display: none;
+            height: 6px;
+        }
+
+        .product-carousel::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        .product-carousel::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
         }
 
         .product-card {
-            flex: 0 0 220px;
-            background: white;
-            border-radius: 16px;
+            flex: 0 0 240px;
+            background: var(--bg-white);
+            border-radius: 12px;
             padding: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
             scroll-snap-align: start;
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-4px);
         }
 
         .product-image {
             width: 100%;
             height: 160px;
-            background: linear-gradient(135deg, #E63946, #ff6b7a);
-            border-radius: 12px;
+            background: linear-gradient(135deg, #ff6b7a, #E63946);
+            border-radius: 8px;
             margin-bottom: 12px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-image::after {
-            content: '👕';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
         }
 
         .product-name {
             font-size: 16px;
             font-weight: 600;
-            margin-bottom: 8px;
-            color: #1d1d1f;
+            margin-bottom: 4px;
+            color: var(--text-primary);
         }
 
         .product-price {
             font-size: 18px;
             font-weight: 700;
-            color: #E63946;
+            color: var(--accent);
             margin-bottom: 12px;
         }
 
-        .add-to-cart {
-            background: #000000;
+        .add-to-cart-btn {
+            background: var(--black);
             color: white;
             border: none;
-            padding: 14px 24px;
-            border-radius: 8px;
+            padding: 12px 20px;
+            border-radius: 6px;
             font-size: 14px;
             font-weight: 600;
-            cursor: pointer;
             width: 100%;
-            transition: background 0.3s ease;
-        }
-
-        .add-to-cart:hover {
-            background: #1d1d1f;
-        }
-
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: white;
-            border: none;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .carousel-nav:hover {
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .carousel-nav.prev {
-            left: -24px;
-        }
-
-        .carousel-nav.next {
-            right: -24px;
         }
 
         /* ===== BLOCK 3: NEWSLETTER POPUP ===== */
-        .newsletter-demo {
+        .newsletter-preview {
             position: relative;
-            height: 400px;
-            background: #f8f8f8;
-            border-radius: 16px;
-            overflow: hidden;
+            height: 300px;
+            background: var(--bg-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .newsletter-popup {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: white;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 480px;
-            padding: 0;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            background: var(--bg-white);
+            border-radius: 16px;
             display: flex;
+            max-width: 400px;
+            width: 90%;
             overflow: hidden;
-            animation: popupShow 1s ease forwards;
-            animation-delay: 3s;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        @keyframes popupShow {
-            to {
-                transform: translate(-50%, -50%) scale(1);
-            }
-        }
-
-        .popup-image {
+        .popup-image-area {
             flex: 1;
-            background: linear-gradient(135deg, #E63946, #ff6b7a);
-            min-height: 300px;
-            position: relative;
-        }
-
-        .popup-image::after {
-            content: '🎁';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 4rem;
+            background: linear-gradient(135deg, #ff6b7a, #E63946);
+            padding: 40px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
         }
 
         .popup-content {
             flex: 1;
-            padding: 40px 32px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .popup-close {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #666;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background 0.3s ease;
-        }
-
-        .popup-close:hover {
-            background: #f0f0f0;
+            padding: 24px 20px;
         }
 
         .popup-title {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
-            margin-bottom: 16px;
-            color: #000000;
+            margin-bottom: 8px;
+            color: var(--black);
         }
 
         .popup-subtitle {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 24px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.4;
         }
 
         .email-input {
             width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
-            margin-bottom: 16px;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-
-        .email-input:focus {
-            border-color: #E63946;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-bottom: 12px;
         }
 
         .submit-btn {
-            background: #E63946;
+            background: var(--accent);
             color: white;
             border: none;
-            padding: 14px 24px;
-            border-radius: 8px;
-            font-size: 16px;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 14px;
             font-weight: 600;
-            cursor: pointer;
             width: 100%;
-            transition: background 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            background: #d63041;
         }
 
         /* ===== BLOCK 4: REVIEWS CAROUSEL ===== */
+        .reviews-container {
+            padding: 20px;
+        }
+
         .reviews-header {
             text-align: center;
-            padding: 20px;
-            background: #f8f8f8;
+            margin-bottom: 20px;
         }
 
         .trust-score {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
-            color: #000;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
+            color: var(--black);
         }
 
-        .trust-subtitle {
+        .reviews-count {
             font-size: 14px;
-            color: #666;
+            color: var(--text-secondary);
         }
 
         .reviews-carousel {
             display: flex;
-            gap: 20px;
-            padding: 20px;
+            gap: 16px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
-            scrollbar-width: none;
+            padding: 0 0 8px 0;
         }
 
         .reviews-carousel::-webkit-scrollbar {
-            display: none;
+            height: 6px;
+        }
+
+        .reviews-carousel::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        .reviews-carousel::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
         }
 
         .review-card {
-            flex: 0 0 280px;
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            flex: 0 0 260px;
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
             scroll-snap-align: start;
-            position: relative;
         }
 
         .review-stars {
-            font-size: 18px;
-            margin-bottom: 16px;
             color: #ffc107;
+            font-size: 16px;
+            margin-bottom: 12px;
         }
 
         .review-text {
-            font-size: 16px;
-            line-height: 1.5;
-            color: #1d1d1f;
+            font-size: 14px;
+            color: var(--text-primary);
             margin-bottom: 16px;
+            line-height: 1.4;
             font-style: italic;
         }
 
@@ -633,117 +441,96 @@
         }
 
         .reviewer-avatar {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #E63946, #ff6b7a);
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #ff6b7a, #E63946);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 16px;
         }
 
-        .reviewer-details h4 {
+        .reviewer-name {
             font-size: 14px;
             font-weight: 600;
-            color: #000;
-            margin: 0;
+            color: var(--text-primary);
         }
 
         .verified-badge {
             font-size: 12px;
             color: #28a745;
-            margin: 0;
         }
 
         /* ===== BLOCK 5: VIDEO HERO ===== */
         .video-hero {
             position: relative;
-            height: 400px;
-            background: linear-gradient(135deg, rgba(30,30,30,0.8), rgba(0,0,0,0.6)), linear-gradient(45deg, #E63946, #ff6b7a);
-            border-radius: 16px;
+            height: 250px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
         }
 
         .play-button {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             background: rgba(255, 255, 255, 0.9);
             border: none;
             border-radius: 50%;
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 30px;
-            color: #000;
-            transition: all 0.3s ease;
+            font-size: 20px;
+            cursor: pointer;
             position: relative;
-            z-index: 2;
-        }
-
-        .play-button:hover {
-            transform: scale(1.1);
-            background: rgba(255, 255, 255, 1);
         }
 
         .play-button:before {
             content: '';
             position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
 
-        .video-overlay-text {
-            position: absolute;
-            bottom: 40px;
-            left: 40px;
-            color: white;
-            z-index: 2;
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.2); opacity: 0; }
         }
 
-        .video-overlay-text h3 {
-            font-size: 28px;
+        .video-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+        }
+
+        .video-title {
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .video-cta {
             background: white;
-            color: #000;
-            padding: 12px 24px;
+            color: var(--black);
+            padding: 8px 16px;
             border: none;
-            border-radius: 25px;
+            border-radius: 4px;
+            font-size: 14px;
             font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .video-cta:hover {
-            transform: translateY(-2px);
         }
 
         /* ===== BLOCK 6: STICKY ADD TO CART ===== */
         .sticky-demo {
             position: relative;
-            height: 300px;
-            background: #f8f8f8;
-            border-radius: 16px;
-            overflow: hidden;
-        }
-
-        .sticky-content {
-            padding: 20px;
             height: 200px;
-            background: white;
+            background: var(--bg-alt);
         }
 
         .sticky-bar {
@@ -751,21 +538,12 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: white;
+            background: var(--bg-white);
             padding: 16px 20px;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
-            gap: 16px;
-            transform: translateY(100%);
-            animation: slideUp 1s ease forwards;
-            animation-delay: 2s;
-        }
-
-        @keyframes slideUp {
-            to {
-                transform: translateY(0);
-            }
+            gap: 12px;
         }
 
         .sticky-product-info {
@@ -775,80 +553,65 @@
         .sticky-product-name {
             font-size: 16px;
             font-weight: 600;
-            color: #000;
-            margin: 0;
+            color: var(--text-primary);
         }
 
-        .sticky-product-price {
+        .sticky-price {
             font-size: 18px;
             font-weight: 700;
-            color: #E63946;
-            margin: 0;
+            color: var(--accent);
         }
 
-        .sticky-variant-select {
+        .size-dropdown {
             padding: 8px 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 6px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
             font-size: 14px;
-            cursor: pointer;
         }
 
         .sticky-add-btn {
-            background: #000;
+            background: var(--black);
             color: white;
-            padding: 14px 24px;
+            padding: 12px 20px;
             border: none;
             border-radius: 6px;
+            font-size: 14px;
             font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            min-width: 120px;
         }
 
-        .sticky-add-btn:hover {
-            background: #1d1d1f;
-        }
-
-        /* ===== BLOCK 7: TRUST BADGE BAR ===== */
+        /* ===== BLOCK 7: TRUST BADGES ===== */
         .trust-badges {
+            padding: 24px 20px;
+            background: var(--bg-alt);
+        }
+
+        .badges-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0;
-            background: #f8f8f8;
-            border-radius: 12px;
-            padding: 24px 0;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
         .trust-badge {
             text-align: center;
-            padding: 0 16px;
-            border-right: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        .trust-badge:last-child {
-            border-right: none;
-        }
-
-        .trust-badge-icon {
+        .badge-icon {
             font-size: 24px;
             margin-bottom: 8px;
             display: block;
         }
 
-        .trust-badge-text {
+        .badge-text {
             font-size: 14px;
             font-weight: 600;
-            color: #333;
-            line-height: 1.3;
+            color: var(--text-primary);
         }
 
         /* ===== BLOCK 8: SOCIAL PROOF TOAST ===== */
         .toast-demo {
             position: relative;
-            height: 300px;
-            background: #f8f8f8;
-            border-radius: 16px;
+            height: 200px;
+            background: var(--bg-alt);
             overflow: hidden;
         }
 
@@ -856,101 +619,84 @@
             position: absolute;
             bottom: 20px;
             left: 20px;
-            background: white;
+            background: var(--bg-white);
             border-radius: 12px;
-            padding: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            padding: 12px 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             display: flex;
             align-items: center;
             gap: 12px;
             max-width: 280px;
-            transform: translateX(-120%);
-            animation: toastSlide 8s infinite;
+            transform: translateX(-100%);
+            animation: slideInOut 6s infinite;
         }
 
-        @keyframes toastSlide {
-            0%, 20% { transform: translateX(-120%); }
+        @keyframes slideInOut {
+            0%, 20% { transform: translateX(-100%); }
             25%, 75% { transform: translateX(0); }
-            80%, 100% { transform: translateX(-120%); }
+            80%, 100% { transform: translateX(-100%); }
         }
 
-        .toast-product-thumb {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #E63946, #ff6b7a);
+        .toast-avatar {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #ff6b7a, #E63946);
             border-radius: 50%;
-            flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 16px;
+            flex-shrink: 0;
         }
 
-        .toast-text {
-            font-size: 14px;
-            line-height: 1.4;
+        .toast-content {
+            font-size: 13px;
+            line-height: 1.3;
         }
 
-        .toast-buyer {
+        .buyer-name {
             font-weight: 600;
-            color: #000;
+            color: var(--text-primary);
         }
 
-        .toast-action {
-            color: #666;
-        }
-
-        .toast-time {
-            font-size: 12px;
-            color: #999;
-            margin-top: 2px;
+        .purchase-time {
+            font-size: 11px;
+            color: var(--text-secondary);
         }
 
         /* ===== BLOCK 9: MEGA MENU ===== */
         .mega-menu-demo {
-            position: relative;
-            background: #f8f8f8;
-            border-radius: 16px;
+            background: var(--bg-white);
+            border-radius: 12px;
             overflow: hidden;
         }
 
         .menu-trigger {
-            background: white;
-            padding: 16px 24px;
-            border: none;
             width: 100%;
+            background: none;
+            border: none;
+            padding: 16px 20px;
             text-align: left;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .menu-trigger:hover {
-            background: #f0f0f0;
+            border-bottom: 1px solid #eee;
         }
 
         .mega-dropdown {
-            background: white;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
-            padding: 32px;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 32px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
+            padding: 20px;
+            border-top: 1px solid #eee;
         }
 
-        .mega-menu-demo:hover .mega-dropdown {
-            max-height: 400px;
+        .menu-column {
+            margin-bottom: 20px;
         }
 
-        .menu-column h4 {
+        .column-title {
             font-size: 16px;
             font-weight: 700;
-            margin-bottom: 16px;
-            color: #000;
+            margin-bottom: 12px;
+            color: var(--black);
         }
 
         .menu-links {
@@ -962,53 +708,54 @@
         }
 
         .menu-links a {
-            color: #666;
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.3s ease;
         }
 
         .menu-links a:hover {
-            color: #E63946;
+            color: var(--accent);
         }
 
         .featured-product {
-            background: #f8f8f8;
-            border-radius: 12px;
+            background: var(--bg-alt);
             padding: 16px;
+            border-radius: 8px;
             text-align: center;
         }
 
         .featured-image {
             width: 100%;
-            height: 120px;
-            background: linear-gradient(135deg, #E63946, #ff6b7a);
-            border-radius: 8px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff6b7a, #E63946);
+            border-radius: 6px;
             margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
         }
 
-        .featured-name {
+        .featured-title {
             font-size: 14px;
             font-weight: 600;
-            color: #000;
             margin-bottom: 4px;
+            color: var(--text-primary);
         }
 
         .featured-price {
             font-size: 16px;
             font-weight: 700;
-            color: #E63946;
+            color: var(--accent);
         }
 
         /* ===== BLOCK 10: FAQ ACCORDION ===== */
         .faq-container {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
+            background: var(--bg-white);
         }
 
         .faq-item {
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid #eee;
         }
 
         .faq-item:last-child {
@@ -1016,10 +763,10 @@
         }
 
         .faq-question {
+            width: 100%;
             background: none;
             border: none;
-            width: 100%;
-            padding: 24px;
+            padding: 20px;
             text-align: left;
             font-size: 16px;
             font-weight: 600;
@@ -1027,30 +774,26 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: background 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: #f8f8f8;
+            color: var(--text-primary);
         }
 
         .faq-icon {
             font-size: 18px;
-            font-weight: 700;
+            font-weight: 300;
             transition: transform 0.3s ease;
         }
 
         .faq-answer {
-            padding: 0 24px;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
+            transition: max-height 0.3s ease;
         }
 
-        .faq-answer p {
+        .faq-answer-content {
+            padding: 0 20px 20px;
             font-size: 14px;
-            color: #666;
-            line-height: 1.6;
+            color: var(--text-secondary);
+            line-height: 1.5;
         }
 
         .faq-item.active .faq-icon {
@@ -1059,489 +802,305 @@
 
         .faq-item.active .faq-answer {
             max-height: 200px;
-            padding: 0 24px 24px;
+        }
+
+        /* Open first FAQ by default */
+        .faq-item:first-child {
+            border-bottom: 1px solid #eee;
+        }
+
+        .faq-item:first-child .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-item:first-child .faq-answer {
+            max-height: 200px;
         }
 
         /* ===== PRICING SECTION ===== */
         .pricing {
-            padding: 120px 0;
+            padding: var(--section-padding-mobile) 16px;
+            background: var(--bg-white);
             text-align: center;
-            background: #ffffff;
         }
 
         .pricing h2 {
-            font-size: clamp(3rem, 5vw, 4rem);
+            font-size: 36px;
             font-weight: 700;
-            margin-bottom: 24px;
-            color: #000000;
-            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            color: var(--black);
         }
 
         .pricing-subtitle {
-            font-size: 1.2rem;
-            color: #6e6e73;
-            margin-bottom: 60px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
         }
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            max-width: 1000px;
+            gap: 20px;
+            max-width: 400px;
             margin: 0 auto;
         }
 
         .pricing-card {
-            background: #ffffff;
-            border: 2px solid #e0e0e0;
-            border-radius: 24px;
-            padding: 40px 32px;
+            background: var(--bg-white);
+            border: 2px solid #eee;
+            border-radius: 16px;
+            padding: 32px 24px;
             position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
 
         .pricing-card.popular {
-            border-color: #E63946;
-            background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
-        }
-
-        .pricing-card.best-value {
-            border-color: #000000;
-            background: linear-gradient(135deg, #1d1d1f 0%, #000000 100%);
-            color: white;
-        }
-
-        .popular-badge, .best-value-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 6px 20px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            border-color: var(--accent);
+            background: linear-gradient(135deg, #fff, #fff5f5);
         }
 
         .popular-badge {
-            background: #E63946;
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
             color: white;
+            padding: 4px 16px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
-        .best-value-badge {
-            background: #28a745;
-            color: white;
+        .plan-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--black);
         }
 
-        .pricing-plan {
-            font-size: 1.4rem;
-            font-weight: 600;
+        .plan-sections {
+            font-size: 16px;
+            color: var(--text-secondary);
             margin-bottom: 16px;
         }
 
-        .pricing-price {
-            font-size: 3rem;
+        .plan-price {
+            font-size: 48px;
             font-weight: 700;
-            color: #E63946;
-            margin-bottom: 8px;
+            color: var(--accent);
+            margin-bottom: 24px;
         }
 
-        .pricing-card.best-value .pricing-price {
-            color: #ffffff;
-        }
-
-        .pricing-period {
-            font-size: 1rem;
-            color: #6e6e73;
-            margin-bottom: 32px;
-        }
-
-        .pricing-card.best-value .pricing-period {
-            color: #a0a0a0;
-        }
-
-        .pricing-btn {
-            background: #000000;
+        .plan-cta {
+            background: var(--black);
             color: white;
-            padding: 16px 32px;
             border: none;
-            border-radius: 50px;
-            font-size: 1rem;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
             font-weight: 600;
-            cursor: pointer;
             width: 100%;
-            transition: all 0.3s ease;
         }
 
-        .pricing-btn:hover {
-            background: #1d1d1f;
-            transform: translateY(-2px);
-        }
-
-        .pricing-card.popular .pricing-btn {
-            background: #E63946;
-        }
-
-        .pricing-card.popular .pricing-btn:hover {
-            background: #d63041;
-        }
-
-        .pricing-card.best-value .pricing-btn {
-            background: white;
-            color: #000;
-        }
-
-        .pricing-card.best-value .pricing-btn:hover {
-            background: #f0f0f0;
-        }
-
-        .pricing-note {
-            font-size: 0.9rem;
-            color: #6e6e73;
-            margin-top: 60px;
-            font-weight: 500;
+        .pricing-card.popular .plan-cta {
+            background: var(--accent);
         }
 
         /* ===== FOOTER ===== */
         .footer {
+            padding: var(--section-padding-mobile) 16px;
+            background: #1a1a1a;
+            color: white;
             text-align: center;
-            padding: 80px 0 60px;
-            background: #f8f8f8;
-            color: #6e6e73;
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         .footer-main {
-            font-size: 1.1rem;
-            margin-bottom: 32px;
-            font-weight: 500;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            margin-bottom: 32px;
-        }
-
-        .footer-links a {
-            color: #1d1d1f;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #E63946;
+            font-size: 16px;
+            margin-bottom: 16px;
+            line-height: 1.4;
         }
 
         .footer-made {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1d1d1f;
+            font-size: 15px;
+            color: #ccc;
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (min-width: 769px) {
-            .mobile-header {
-                display: none;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .section-content {
-                gap: 60px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 16px;
-            }
-
+        /* ===== DESKTOP RESPONSIVE ===== */
+        @media (min-width: 768px) {
             .section {
-                padding: 48px 0;
+                padding: var(--section-padding-desktop) 40px;
             }
 
-            .hero h1 {
-                font-size: 32px !important;
+            .section-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+                align-items: center;
+                max-width: 1200px;
+                margin: 0 auto;
             }
 
-            .section-info h2 {
-                font-size: 24px !important;
+            .section:nth-child(even) .section-container {
+                direction: rtl;
             }
 
-            .section-info p {
-                font-size: 15px !important;
-                padding: 0 16px;
-                max-width: 100%;
-            }
-
-            .section-info h2 {
-                padding: 0 16px;
-                max-width: 100%;
-            }
-
-            .features {
-                padding: 0 16px;
-                max-width: 100%;
-            }
-
-            .section-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .section:nth-child(even) .section-content {
+            .section:nth-child(even) .section-content,
+            .section:nth-child(even) .live-preview {
                 direction: ltr;
             }
 
-            .demo-container {
-                padding: 24px;
+            .hero {
+                padding: 120px 40px 80px;
             }
 
-            .phone-mockup {
-                max-width: 280px;
+            .hero h1 {
+                font-size: 56px;
             }
 
-            .phone-screen {
-                height: 500px;
+            .section h2 {
+                font-size: 36px;
+            }
+
+            .section-description {
+                font-size: 17px;
+            }
+
+            .badges-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
 
             .pricing-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .trust-badges {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 16px 0;
-            }
-
-            .trust-badge {
-                padding: 16px;
-                border-right: none;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            }
-
-            .trust-badge:nth-child(2), .trust-badge:nth-child(4) {
-                border-bottom: none;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .product-carousel, .reviews-carousel {
-                padding: 16px 16px 16px 16px;
-                padding-right: calc(16px + 160px); /* Show ~20% of next card on mobile */
-            }
-
-            .product-card, .review-card {
-                flex: 0 0 200px;
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 1000px;
             }
 
             .mega-dropdown {
-                grid-template-columns: 1fr;
-                gap: 24px;
-                padding: 24px;
-            }
-
-            .newsletter-popup {
-                flex-direction: column;
-            }
-
-            .popup-image {
-                min-height: 200px;
-            }
-
-            .hero {
-                padding: 140px 0 40px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section {
-                padding: 40px 0;
-            }
-
-            .demo-container {
-                padding: 16px;
-            }
-
-            .pricing {
-                padding: 80px 0;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 32px;
             }
         }
     </style>
 </head>
 <body>
     <!-- Mobile Header -->
-    <div class="mobile-header">
-        <div class="logo-text">ShopBlocks</div>
-        <div class="hamburger-menu">
+    <header class="header">
+        <div class="logo">ShopBlocks</div>
+        <div class="hamburger">
             <span></span>
             <span></span>
             <span></span>
         </div>
-    </div>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <h1>Premium Shopify Sections</h1>
-            <p class="hero-subtitle">Inspired by Germany's top D2C brands. Works with any OS 2.0 theme.</p>
-            <p class="hero-social-proof">Used by brands like SNOCKS, waterdrop, HOLY...</p>
-            <a href="#sections" class="hero-cta">Browse Sections</a>
-        </div>
+        <h1>Premium Shopify<br>Sections</h1>
+        <p class="hero-subtitle">Inspired by Germany's top D2C brands.<br>Works with any OS 2.0 theme.</p>
+        <p class="hero-social-proof">Trusted by 200+ Shopify stores</p>
+        <a href="#sections" class="hero-cta">Browse Sections →</a>
     </section>
 
-    <!-- Section 1: Announcement Bar Pro -->
+    <!-- Block 1: Announcement Bar -->
     <section class="section" id="sections">
-        <div class="container">
+        <div class="section-container">
             <div class="section-content">
-                <div class="section-info">
-                    <div class="inspired-tag">Inspired by: SNOCKS, waterdrop</div>
-                    <h2>Announcement Bar Pro</h2>
-                    <p>Create attention with a sleek, animated announcement bar that rotates multiple messages.</p>
+                <div class="section-header">
+                    <span class="inspired-by">Inspired by: SNOCKS, waterdrop</span>
+                    <h2>Announcement Bar</h2>
+                    <p class="section-description">Rotating messages with smooth transitions. Perfect for promotions and new product announcements.</p>
                     <ul class="features">
-                        <li>Multi-message rotation with smooth transitions</li>
-                        <li>Integrated countdown for time-critical actions</li>
-                        <li>Minimal, professional design</li>
-                        <li>Perfect for sales & new drops</li>
+                        <li>3 rotating messages</li>
+                        <li>Smooth fade transitions</li>
+                        <li>Mobile optimized</li>
                     </ul>
+                    <a href="#" class="section-cta">Get this section — €12</a>
                 </div>
-                <div class="section-demo">
-                    <div class="demo-container">
-                        <div class="phone-mockup">
-                            <div class="phone-screen">
-                                <div class="announcement-bar">
-                                    <div class="announcement-content">
-                                        FREE SHIPPING OVER 50€
-                                    </div>
-                                    <div class="announcement-content">
-                                        NEW DROP FRIDAY 18:00 <span class="countdown-inline">02:14:33</span>
-                                    </div>
-                                    <div class="announcement-content">
-                                        EASY RETURNS - 30 DAYS
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="live-preview">
+                <div class="announcement-bar">
+                    <div class="announcement-text">FREE SHIPPING OVER 50€</div>
+                    <div class="announcement-text">NEW DROP FRIDAY</div>
+                    <div class="announcement-text">EASY RETURNS</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 2: Product Carousel -->
+    <!-- Block 2: Product Carousel -->
     <section class="section">
-        <div class="container">
-            <div class="section-content">
-                <div class="section-demo">
-                    <div class="demo-container">
-                        <div class="browser-mockup">
-                            <div class="browser-bar">
-                                <div class="browser-dot"></div>
-                                <div class="browser-dot"></div>
-                                <div class="browser-dot"></div>
-                            </div>
-                            <div class="browser-content">
-                                <div class="product-carousel" id="productCarousel">
-                                    <div class="product-card">
-                                        <div class="product-image"></div>
-                                        <div class="product-name">Essential Tee</div>
-                                        <div class="product-price">€29.99</div>
-                                        <button class="add-to-cart">Add to Cart</button>
-                                    </div>
-                                    <div class="product-card">
-                                        <div class="product-image"></div>
-                                        <div class="product-name">Premium Hoodie</div>
-                                        <div class="product-price">€79.99</div>
-                                        <button class="add-to-cart">Add to Cart</button>
-                                    </div>
-                                    <div class="product-card">
-                                        <div class="product-image"></div>
-                                        <div class="product-name">Vintage Cap</div>
-                                        <div class="product-price">€24.99</div>
-                                        <button class="add-to-cart">Add to Cart</button>
-                                    </div>
-                                    <div class="product-card">
-                                        <div class="product-image"></div>
-                                        <div class="product-name">Classic Jeans</div>
-                                        <div class="product-price">€89.99</div>
-                                        <button class="add-to-cart">Add to Cart</button>
-                                    </div>
-                                    <div class="product-card">
-                                        <div class="product-image"></div>
-                                        <div class="product-name">Sport Sneakers</div>
-                                        <div class="product-price">€129.99</div>
-                                        <button class="add-to-cart">Add to Cart</button>
-                                    </div>
-                                </div>
-                                <button class="carousel-nav prev" onclick="scrollCarousel('productCarousel', -220)">‹</button>
-                                <button class="carousel-nav next" onclick="scrollCarousel('productCarousel', 220)">›</button>
-                            </div>
+        <div class="section-container">
+            <div class="live-preview">
+                <div class="product-carousel-container">
+                    <div class="product-carousel">
+                        <div class="product-card">
+                            <div class="product-image">👕</div>
+                            <div class="product-name">Essential Tee</div>
+                            <div class="product-price">€29.99</div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">👔</div>
+                            <div class="product-name">Premium Hoodie</div>
+                            <div class="product-price">€79.99</div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">🧢</div>
+                            <div class="product-name">Vintage Cap</div>
+                            <div class="product-price">€24.99</div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">👖</div>
+                            <div class="product-name">Classic Jeans</div>
+                            <div class="product-price">€89.99</div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
                         </div>
                     </div>
                 </div>
-                <div class="section-info">
-                    <div class="inspired-tag">Inspired by: Purelei, HOLY</div>
+            </div>
+            <div class="section-content">
+                <div class="section-header">
+                    <span class="inspired-by">Inspired by: Purelei, HOLY</span>
                     <h2>Product Carousel</h2>
-                    <p>Present your products in an elegant, scrollable carousel with touch support.</p>
+                    <p class="section-description">Horizontal scrolling product showcase with touch support and scroll-snap for perfect alignment.</p>
                     <ul class="features">
-                        <li>Horizontal scrolling with scroll-snap</li>
-                        <li>Touch and drag support for mobile</li>
-                        <li>Responsive product cards with hover effects</li>
-                        <li>Navigation arrows for better UX</li>
+                        <li>Touch-friendly scrolling</li>
+                        <li>Scroll-snap alignment</li>
+                        <li>Responsive cards</li>
                     </ul>
+                    <a href="#" class="section-cta">Get this section — €12</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 3: Newsletter Popup -->
+    <!-- Block 3: Newsletter Popup -->
     <section class="section">
-        <div class="container">
+        <div class="section-container">
             <div class="section-content">
-                <div class="section-info">
-                    <div class="inspired-tag">Inspired by: JUNGLÜCK, Purelei</div>
+                <div class="section-header">
+                    <span class="inspired-by">Inspired by: JUNGLÜCK, Purelei</span>
                     <h2>Newsletter Popup</h2>
-                    <p>Collect emails with an elegant modal that appears at the right time and converts.</p>
+                    <p class="section-description">Elegant split-design popup to collect emails without being intrusive. Fully responsive design.</p>
                     <ul class="features">
-                        <li>Time-controlled display based on scroll behavior</li>
-                        <li>Responsive split-layout with image</li>
-                        <li>Easy to close with X or backdrop click</li>
-                        <li>Optimized for mobile devices</li>
+                        <li>Split image/content layout</li>
+                        <li>Mobile responsive</li>
+                        <li>Easy to customize</li>
                     </ul>
+                    <a href="#" class="section-cta">Get this section — €12</a>
                 </div>
-                <div class="section-demo">
-                    <div class="demo-container">
-                        <div class="newsletter-demo">
-                            <div class="newsletter-popup">
-                                <button class="popup-close">×</button>
-                                <div class="popup-image"></div>
-                                <div class="popup-content">
-                                    <h3 class="popup-title">Get 10% off your first order</h3>
-                                    <p class="popup-subtitle">Join our newsletter and be the first to know about new drops.</p>
-                                    <input type="email" class="email-input" placeholder="Enter your email">
-                                    <button class="submit-btn">Get Discount</button>
-                                </div>
-                            </div>
+            </div>
+            <div class="live-preview">
+                <div class="newsletter-preview">
+                    <div class="newsletter-popup">
+                        <div class="popup-image-area">🎁</div>
+                        <div class="popup-content">
+                            <h3 class="popup-title">Get 10% off</h3>
+                            <p class="popup-subtitle">Join our newsletter for exclusive deals and updates.</p>
+                            <input type="email" class="email-input" placeholder="Enter email">
+                            <button class="submit-btn">Get Discount</button>
                         </div>
                     </div>
                 </div>
@@ -1549,208 +1108,164 @@
         </div>
     </section>
 
-    <!-- Section 4: Reviews Carousel -->
+    <!-- Block 4: Reviews Carousel -->
     <section class="section">
-        <div class="container">
-            <div class="section-content">
-                <div class="section-demo">
-                    <div class="demo-container">
-                        <div class="browser-mockup">
-                            <div class="browser-bar">
-                                <div class="browser-dot"></div>
-                                <div class="browser-dot"></div>
-                                <div class="browser-dot"></div>
-                            </div>
-                            <div class="browser-content">
-                                <div class="reviews-header">
-                                    <div class="trust-score">4.9/5 ⭐⭐⭐⭐⭐</div>
-                                    <div class="trust-subtitle">based on 2,847 reviews</div>
+        <div class="section-container">
+            <div class="live-preview">
+                <div class="reviews-container">
+                    <div class="reviews-header">
+                        <div class="trust-score">4.9/5 based on 2,847 reviews</div>
+                    </div>
+                    <div class="reviews-carousel">
+                        <div class="review-card">
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                            <p class="review-text">"Great quality, fits perfectly! Definitely ordering again."</p>
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">👩</div>
+                                <div>
+                                    <div class="reviewer-name">Anna M.</div>
+                                    <div class="verified-badge">✓ Verified Buyer</div>
                                 </div>
-                                <div class="reviews-carousel">
-                                    <div class="review-card">
-                                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                                        <div class="review-text">"Absolute quality! Delivery was super fast and the product exceeds all expectations."</div>
-                                        <div class="reviewer-info">
-                                            <div class="reviewer-avatar">👨</div>
-                                            <div class="reviewer-details">
-                                                <h4>Marcus K.</h4>
-                                                <p class="verified-badge">✓ Verified Buyer</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="review-card">
-                                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                                        <div class="review-text">"I order here regularly. Service is top and the quality is always perfect!"</div>
-                                        <div class="reviewer-info">
-                                            <div class="reviewer-avatar">👩</div>
-                                            <div class="reviewer-details">
-                                                <h4>Sarah M.</h4>
-                                                <p class="verified-badge">✓ Verified Buyer</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="review-card">
-                                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                                        <div class="review-text">"Perfect fit and the material feels very high quality. Definitely recommend!"</div>
-                                        <div class="reviewer-info">
-                                            <div class="reviewer-avatar">👨</div>
-                                            <div class="reviewer-details">
-                                                <h4>Tom B.</h4>
-                                                <p class="verified-badge">✓ Verified Buyer</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="review-card">
-                                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                                        <div class="review-text">"Super satisfied with my order. Everything perfectly packed and delivered quickly."</div>
-                                        <div class="reviewer-info">
-                                            <div class="reviewer-avatar">👩</div>
-                                            <div class="reviewer-details">
-                                                <h4>Lisa H.</h4>
-                                                <p class="verified-badge">✓ Verified Buyer</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="review-card">
-                                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                                        <div class="review-text">"Best decision! The products deliver what they promise and the customer service is fantastic."</div>
-                                        <div class="reviewer-info">
-                                            <div class="reviewer-avatar">👨</div>
-                                            <div class="reviewer-details">
-                                                <h4>Alex R.</h4>
-                                                <p class="verified-badge">✓ Verified Buyer</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                            <p class="review-text">"Fast shipping and amazing customer service. Highly recommend!"</p>
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">👨</div>
+                                <div>
+                                    <div class="reviewer-name">Max K.</div>
+                                    <div class="verified-badge">✓ Verified Buyer</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                            <p class="review-text">"Perfect material and the fit is exactly as expected."</p>
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">👩</div>
+                                <div>
+                                    <div class="reviewer-name">Lisa B.</div>
+                                    <div class="verified-badge">✓ Verified Buyer</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="section-info">
-                    <div class="inspired-tag">Inspired by: Gymshark, SNOCKS</div>
+            </div>
+            <div class="section-content">
+                <div class="section-header">
+                    <span class="inspired-by">Inspired by: Gymshark, SNOCKS</span>
                     <h2>Reviews Carousel</h2>
-                    <p>Build trust with authentic customer reviews in an elegant carousel format.</p>
+                    <p class="section-description">Build trust with scrollable customer reviews featuring star ratings and verified buyer badges.</p>
                     <ul class="features">
-                        <li>5-star rating system with trust score</li>
-                        <li>Scrollable review cards with avatars</li>
-                        <li>"Verified Buyer" badges for authenticity</li>
-                        <li>Auto-scrolling and touch support</li>
+                        <li>5-star rating display</li>
+                        <li>Verified buyer badges</li>
+                        <li>Touch-scroll support</li>
                     </ul>
+                    <a href="#" class="section-cta">Get this section — €12</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 5: Video Hero -->
+    <!-- Block 5: Video Hero -->
     <section class="section">
-        <div class="container">
+        <div class="section-container">
             <div class="section-content">
-                <div class="section-info">
-                    <div class="inspired-tag">Inspired by: SNOCKS, waterdrop</div>
-                    <h2>Video Hero Section</h2>
-                    <p>Impress your visitors with a cinematic video hero section with parallax effects.</p>
+                <div class="section-header">
+                    <span class="inspired-by">Inspired by: SNOCKS, waterdrop</span>
+                    <h2>Video Hero</h2>
+                    <p class="section-description">Cinematic video section with animated play button and text overlay for maximum impact.</p>
                     <ul class="features">
-                        <li>Animated play button with pulse effect</li>
-                        <li>Gradient overlay for better readability</li>
-                        <li>Responsive video container</li>
-                        <li>Call-to-action integration in overlay</li>
+                        <li>Animated play button</li>
+                        <li>Gradient overlay</li>
+                        <li>Text integration</li>
                     </ul>
+                    <a href="#" class="section-cta">Get this section — €12</a>
                 </div>
-                <div class="section-demo">
-                    <div class="demo-container">
-                        <div class="video-hero">
-                            <button class="play-button">▶</button>
-                            <div class="video-overlay-text">
-                                <h3>Experience Premium Quality</h3>
-                                <button class="video-cta">Shop Now</button>
-                            </div>
-                        </div>
+            </div>
+            <div class="live-preview">
+                <div class="video-hero">
+                    <button class="play-button">▶</button>
+                    <div class="video-overlay">
+                        <h3 class="video-title">Your Story. Your Style.</h3>
+                        <button class="video-cta">Shop Now</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 6: Sticky Add-to-Cart Bar -->
+    <!-- Block 6: Sticky Add-to-Cart -->
     <section class="section">
-        <div class="container">
-            <div class="section-content">
-                <div class="section-demo">
-                    <div class="demo-container">
-                        <div class="phone-mockup">
-                            <div class="phone-screen">
-                                <div class="sticky-demo">
-                                    <div class="sticky-content">
-                                        <h3 style="margin: 20px 0;">Product Details</h3>
-                                        <p style="color: #666; margin-bottom: 16px;">Scroll down to see the sticky bar in action...</p>
-                                    </div>
-                                    <div class="sticky-bar">
-                                        <div class="sticky-product-info">
-                                            <div class="sticky-product-name">Essential Tee</div>
-                                            <div class="sticky-product-price">€29.99</div>
-                                        </div>
-                                        <select class="sticky-variant-select">
-                                            <option>Size: M</option>
-                                            <option>Size: L</option>
-                                            <option>Size: XL</option>
-                                        </select>
-                                        <button class="sticky-add-btn">Add to Cart</button>
-                                    </div>
-                                </div>
-                            </div>
+        <div class="section-container">
+            <div class="live-preview">
+                <div class="sticky-demo">
+                    <div class="sticky-bar">
+                        <div class="sticky-product-info">
+                            <div class="sticky-product-name">Essential Tee</div>
+                            <div class="sticky-price">€34.99</div>
                         </div>
+                        <select class="size-dropdown">
+                            <option>Size: M</option>
+                            <option>Size: L</option>
+                            <option>Size: XL</option>
+                        </select>
+                        <button class="sticky-add-btn">Add to Cart</button>
                     </div>
                 </div>
-                <div class="section-info">
-                    <div class="inspired-tag">Inspired by: waterdrop, JUNGLÜCK</div>
-                    <h2>Sticky Add-to-Cart Bar</h2>
-                    <p>Increase your conversion rate with a sticky bar that appears when scrolling and stays available.</p>
+            </div>
+            <div class="section-content">
+                <div class="section-header">
+                    <span class="inspired-by">Inspired by: waterdrop, JUNGLÜCK</span>
+                    <h2>Sticky Add-to-Cart</h2>
+                    <p class="section-description">Increase conversions with a sticky bar that stays visible while users scroll through product details.</p>
                     <ul class="features">
-                        <li>Appears automatically when scrolling down</li>
-                        <li>Integrated variant selection</li>
-                        <li>Smooth slide-up animation</li>
-                        <li>Compact design optimized for mobile</li>
+                        <li>Always visible</li>
+                        <li>Size selection</li>
+                        <li>Mobile optimized</li>
                     </ul>
+                    <a href="#" class="section-cta">Get this section — €12</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 7: Trust Badge Bar -->
+    <!-- Block 7: Trust Badge Bar -->
     <section class="section">
-        <div class="container">
+        <div class="section-container">
             <div class="section-content">
-                <div class="section-info">
-                    <div class="inspired-tag">Inspired by: waterdrop, Ankerkraut</div>
+                <div class="section-header">
+                    <span class="inspired-by">Inspired by: waterdrop, Ankerkraut</span>
                     <h2>Trust Badge Bar</h2>
-                    <p>Create instant trust with a minimalist badge bar that highlights your USPs.</p>
+                    <p class="section-description">Build instant trust with key benefits displayed in an elegant 2x2 mobile grid layout.</p>
                     <ul class="features">
-                        <li>4 important trust badges in a row</li>
-                        <li>Responsive grid (2x2 on mobile)</li>
-                        <li>Minimalist icon design</li>
-                        <li>No animations for optimal performance</li>
+                        <li>4 trust indicators</li>
+                        <li>2x2 mobile layout</li>
+                        <li>Clean design</li>
                     </ul>
+                    <a href="#" class="section-cta">Get this section — €12</a>
                 </div>
-                <div class="section-demo">
-                    <div class="demo-container">
-                        <div class="trust-badges">
-                            <div class="trust-badge">
-                                <span class="trust-badge-icon">🚚</span>
-                                <span class="trust-badge-text">Free Shipping</span>
-                            </div>
-                            <div class="trust-badge">
-                                <span class="trust-badge-icon">🔒</span>
-                                <span class="trust-badge-text">Secure Payment</span>
-                            </div>
-                            <div class="trust-badge">
-                                <span class="trust-badge-icon">↩️</span>
-                                <span class="trust-badge-text">30 Day Returns</span>
-                            </div>
-                            <div class="trust-badge">
-                                <span class="trust-badge-icon">⭐</span>
-                                <span class="trust-badge-text">4.9 Rating</span>
-                            </div>
+            </div>
+            <div class="live-preview">
+                <div class="trust-badges">
+                    <div class="badges-grid">
+                        <div class="trust-badge">
+                            <span class="badge-icon">🚚</span>
+                            <span class="badge-text">Free Shipping</span>
+                        </div>
+                        <div class="trust-badge">
+                            <span class="badge-icon">🔒</span>
+                            <span class="badge-text">Secure Payment</span>
+                        </div>
+                        <div class="trust-badge">
+                            <span class="badge-icon">↩️</span>
+                            <span class="badge-text">30-Day Returns</span>
+                        </div>
+                        <div class="trust-badge">
+                            <span class="badge-icon">⭐</span>
+                            <span class="badge-text">4.9 Rating</span>
                         </div>
                     </div>
                 </div>
@@ -1758,95 +1273,79 @@
         </div>
     </section>
 
-    <!-- Section 8: Social Proof Toast -->
+    <!-- Block 8: Social Proof Toast -->
     <section class="section">
-        <div class="container">
-            <div class="section-content">
-                <div class="section-demo">
-                    <div class="demo-container">
-                        <div class="toast-demo">
-                            <div class="toast-notification">
-                                <div class="toast-product-thumb">👕</div>
-                                <div class="toast-content">
-                                    <div class="toast-text">
-                                        <span class="toast-buyer">Anna from Munich</span> <span class="toast-action">just bought 'Classic Tee'</span>
-                                    </div>
-                                    <div class="toast-time">3 min ago</div>
-                                </div>
-                            </div>
+        <div class="section-container">
+            <div class="live-preview">
+                <div class="toast-demo">
+                    <div class="toast-notification">
+                        <div class="toast-avatar">👕</div>
+                        <div class="toast-content">
+                            <div><span class="buyer-name">Max from Berlin</span> just bought 'Classic Tee'</div>
+                            <div class="purchase-time">3 min ago</div>
                         </div>
                     </div>
                 </div>
-                <div class="section-info">
-                    <div class="inspired-tag">Inspired by: Ankerkraut</div>
+            </div>
+            <div class="section-content">
+                <div class="section-header">
+                    <span class="inspired-by">Inspired by: Ankerkraut</span>
                     <h2>Social Proof Toast</h2>
-                    <p>Create FOMO and social proof with discretely animated purchase notifications.</p>
+                    <p class="section-description">Create FOMO with subtle purchase notifications that slide in and out automatically.</p>
                     <ul class="features">
-                        <li>Auto-rotation through different purchase notifications</li>
-                        <li>Smooth slide-in/out animations</li>
-                        <li>Small, unobtrusive design</li>
-                        <li>Customizable names, cities and products</li>
+                        <li>Auto-sliding animation</li>
+                        <li>Recent purchases</li>
+                        <li>Subtle design</li>
                     </ul>
+                    <a href="#" class="section-cta">Get this section — €12</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 9: Mega Menu -->
+    <!-- Block 9: Mega Menu -->
     <section class="section">
-        <div class="container">
+        <div class="section-container">
             <div class="section-content">
-                <div class="section-info">
-                    <div class="inspired-tag">Inspired by: HOLY, waterdrop</div>
+                <div class="section-header">
+                    <span class="inspired-by">Inspired by: HOLY, waterdrop</span>
                     <h2>Mega Menu</h2>
-                    <p>Organize your navigation with a professional mega menu featuring products.</p>
+                    <p class="section-description">Organized navigation with categories, subcategories, and featured products in a clean dropdown design.</p>
                     <ul class="features">
-                        <li>3-column layout with categories</li>
-                        <li>Featured product integration</li>
-                        <li>Smooth open/close animations</li>
-                        <li>Responsive for all screen sizes</li>
+                        <li>3-column desktop layout</li>
+                        <li>Featured products</li>
+                        <li>Mobile responsive</li>
                     </ul>
+                    <a href="#" class="section-cta">Get this section — €12</a>
                 </div>
-                <div class="section-demo">
-                    <div class="demo-container">
-                        <div class="browser-mockup">
-                            <div class="browser-bar">
-                                <div class="browser-dot"></div>
-                                <div class="browser-dot"></div>
-                                <div class="browser-dot"></div>
-                            </div>
-                            <div class="browser-content">
-                                <div class="mega-menu-demo">
-                                    <button class="menu-trigger">Shop All ▼</button>
-                                    <div class="mega-dropdown">
-                                        <div class="menu-column">
-                                            <h4>Categories</h4>
-                                            <ul class="menu-links">
-                                                <li><a href="#">T-Shirts</a></li>
-                                                <li><a href="#">Hoodies</a></li>
-                                                <li><a href="#">Pants</a></li>
-                                                <li><a href="#">Accessories</a></li>
-                                                <li><a href="#">Sale</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="menu-column">
-                                            <h4>Subcategories</h4>
-                                            <ul class="menu-links">
-                                                <li><a href="#">Basic Tees</a></li>
-                                                <li><a href="#">Premium Tees</a></li>
-                                                <li><a href="#">Vintage Collection</a></li>
-                                                <li><a href="#">Limited Edition</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="menu-column">
-                                            <div class="featured-product">
-                                                <div class="featured-image"></div>
-                                                <div class="featured-name">Featured: Essential Pack</div>
-                                                <div class="featured-price">€49.99</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+            </div>
+            <div class="live-preview">
+                <div class="mega-menu-demo">
+                    <button class="menu-trigger">Shop All ▼</button>
+                    <div class="mega-dropdown">
+                        <div class="menu-column">
+                            <h4 class="column-title">Categories</h4>
+                            <ul class="menu-links">
+                                <li><a href="#">T-Shirts</a></li>
+                                <li><a href="#">Hoodies</a></li>
+                                <li><a href="#">Accessories</a></li>
+                                <li><a href="#">Sale</a></li>
+                            </ul>
+                        </div>
+                        <div class="menu-column">
+                            <h4 class="column-title">Subcategories</h4>
+                            <ul class="menu-links">
+                                <li><a href="#">Basic Tees</a></li>
+                                <li><a href="#">Premium Tees</a></li>
+                                <li><a href="#">Vintage Collection</a></li>
+                                <li><a href="#">Limited Edition</a></li>
+                            </ul>
+                        </div>
+                        <div class="menu-column">
+                            <div class="featured-product">
+                                <div class="featured-image">👕</div>
+                                <div class="featured-title">Essential Pack</div>
+                                <div class="featured-price">€49.99</div>
                             </div>
                         </div>
                     </div>
@@ -1855,71 +1354,68 @@
         </div>
     </section>
 
-    <!-- Section 10: FAQ Accordion -->
+    <!-- Block 10: FAQ Accordion -->
     <section class="section">
-        <div class="container">
-            <div class="section-content">
-                <div class="section-demo">
-                    <div class="demo-container">
-                        <div class="faq-container">
-                            <div class="faq-item">
-                                <button class="faq-question" onclick="toggleFaq(this)">
-                                    <span>How long does shipping take?</span>
-                                    <span class="faq-icon">+</span>
-                                </button>
-                                <div class="faq-answer">
-                                    <p>We ship all orders within 1-2 business days. Shipping typically takes 2-3 business days within Germany.</p>
-                                </div>
+        <div class="section-container">
+            <div class="live-preview">
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>How long does shipping take?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                We ship all orders within 1-2 business days. Delivery typically takes 2-3 business days within Germany.
                             </div>
-                            <div class="faq-item">
-                                <button class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Can I exchange my order?</span>
-                                    <span class="faq-icon">+</span>
-                                </button>
-                                <div class="faq-answer">
-                                    <p>Yes, you have 30 days to return or exchange your order for free.</p>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Can I exchange my order?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Yes, you have 30 days to return or exchange your order for free.
                             </div>
-                            <div class="faq-item">
-                                <button class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Which payment methods do you accept?</span>
-                                    <span class="faq-icon">+</span>
-                                </button>
-                                <div class="faq-answer">
-                                    <p>We accept all common payment methods: PayPal, Klarna, credit card and SEPA direct debit.</p>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Which payment methods do you accept?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                We accept PayPal, Klarna, credit cards, and SEPA direct debit.
                             </div>
-                            <div class="faq-item">
-                                <button class="faq-question" onclick="toggleFaq(this)">
-                                    <span>How does the sizing run?</span>
-                                    <span class="faq-icon">+</span>
-                                </button>
-                                <div class="faq-answer">
-                                    <p>Our sizes run true to fit. You can find a detailed size chart on each product page.</p>
-                                </div>
-                            </div>
-                            <div class="faq-item">
-                                <button class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Do you offer free shipping?</span>
-                                    <span class="faq-icon">+</span>
-                                </button>
-                                <div class="faq-answer">
-                                    <p>Yes! We offer free shipping within Germany for orders over €50.</p>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Do you offer free shipping?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Yes! We offer free shipping within Germany for orders over €50.
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="section-info">
-                    <div class="inspired-tag">Inspired by: All D2C Brands</div>
+            </div>
+            <div class="section-content">
+                <div class="section-header">
+                    <span class="inspired-by">Inspired by: All D2C Brands</span>
                     <h2>FAQ Accordion</h2>
-                    <p>Answer common questions elegantly with an interactive accordion system.</p>
+                    <p class="section-description">Answer customer questions with an interactive accordion that opens one item at a time with smooth animations.</p>
                     <ul class="features">
-                        <li>5 predefined standard questions</li>
-                        <li>Smooth open/close animations</li>
-                        <li>Only one question open at a time</li>
-                        <li>Plus/minus icon transformation</li>
+                        <li>Smooth transitions</li>
+                        <li>Plus/minus icons</li>
+                        <li>One open at a time</li>
                     </ul>
+                    <a href="#" class="section-cta">Get this section — €12</a>
                 </div>
             </div>
         </div>
@@ -1927,62 +1423,40 @@
 
     <!-- Pricing Section -->
     <section class="pricing">
-        <div class="container">
-            <h2>Simple Pricing</h2>
-            <p class="pricing-subtitle">One-time payment. Free updates. No subscription.</p>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-plan">Single Section</div>
-                    <div class="pricing-price">12€</div>
-                    <div class="pricing-period">One-time payment</div>
-                    <button class="pricing-btn">Choose Section</button>
-                </div>
-                <div class="pricing-card popular">
-                    <div class="popular-badge">Most Popular</div>
-                    <div class="pricing-plan">Starter Pack</div>
-                    <div class="pricing-price">39€</div>
-                    <div class="pricing-period">5 Sections included</div>
-                    <button class="pricing-btn">Get Starter Pack</button>
-                </div>
-                <div class="pricing-card best-value">
-                    <div class="best-value-badge">Best Value</div>
-                    <div class="pricing-plan">Complete Bundle</div>
-                    <div class="pricing-price">59€</div>
-                    <div class="pricing-period">All 10 Sections</div>
-                    <button class="pricing-btn">Get All Sections</button>
-                </div>
+        <h2>Simple Pricing</h2>
+        <p class="pricing-subtitle">One-time payment. No subscription.</p>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="plan-name">STARTER</div>
+                <div class="plan-sections">1 Section</div>
+                <div class="plan-price">€12</div>
+                <button class="plan-cta">Get Started</button>
             </div>
-            <p class="pricing-note">One-time payment. Free updates. No subscription.</p>
+            <div class="pricing-card popular">
+                <div class="popular-badge">Most Popular</div>
+                <div class="plan-name">POPULAR</div>
+                <div class="plan-sections">5 Sections</div>
+                <div class="plan-price">€39</div>
+                <button class="plan-cta">Get Popular</button>
+            </div>
+            <div class="pricing-card">
+                <div class="plan-name">COMPLETE</div>
+                <div class="plan-sections">10 Sections</div>
+                <div class="plan-price">€59</div>
+                <button class="plan-cta">Get Complete</button>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p class="footer-main">Works with Dawn, Sense, Craft, and any Shopify OS 2.0 theme</p>
-                <div class="footer-links">
-                    <a href="#">GitHub</a>
-                    <a href="mailto:support@shopify-sections.de">Support</a>
-                    <a href="#">Documentation</a>
-                </div>
-                <p class="footer-made">Made in Germany 🇩🇪</p>
-            </div>
-        </div>
+        <p class="footer-main">Works with Dawn, Sense, Craft & any OS 2.0 theme</p>
+        <p class="footer-made">Made in Germany 🇩🇪</p>
     </footer>
 
     <script>
-        // ===== CAROUSEL NAVIGATION =====
-        function scrollCarousel(carouselId, scrollAmount) {
-            const carousel = document.getElementById(carouselId);
-            carousel.scrollBy({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-        }
-
-        // ===== FAQ ACCORDION =====
-        function toggleFaq(button) {
+        // FAQ Accordion functionality
+        function toggleFAQ(button) {
             const faqItem = button.parentElement;
             const isActive = faqItem.classList.contains('active');
             
@@ -1997,61 +1471,34 @@
             }
         }
 
-        // ===== SOCIAL PROOF ROTATION =====
+        // Social Proof Toast data rotation
         const socialProofData = [
-            { name: "Anna from Munich", product: "Classic Tee", time: "3 min ago" },
-            { name: "Max from Berlin", product: "Premium Hoodie", time: "7 min ago" },
+            { name: "Max from Berlin", product: "Classic Tee", time: "3 min ago" },
+            { name: "Anna from Munich", product: "Premium Hoodie", time: "7 min ago" },
             { name: "Lisa from Hamburg", product: "Vintage Cap", time: "12 min ago" },
-            { name: "Tom from Cologne", product: "Essential Pack", time: "18 min ago" },
-            { name: "Sarah from Frankfurt", product: "Sport Sneakers", time: "25 min ago" }
+            { name: "Tom from Cologne", product: "Essential Pack", time: "18 min ago" }
         ];
-        
+
         let currentProofIndex = 0;
-        
+
         function updateSocialProof() {
-            const toast = document.querySelector('.toast-notification');
+            const toastContent = document.querySelector('.toast-notification .toast-content');
             const data = socialProofData[currentProofIndex];
             
-            if (toast) {
-                toast.querySelector('.toast-buyer').textContent = data.name;
-                toast.querySelector('.toast-action').textContent = `just bought '${data.product}'`;
-                toast.querySelector('.toast-time').textContent = data.time;
-                
+            if (toastContent) {
+                toastContent.innerHTML = `
+                    <div><span class="buyer-name">${data.name}</span> just bought '${data.product}'</div>
+                    <div class="purchase-time">${data.time}</div>
+                `;
                 currentProofIndex = (currentProofIndex + 1) % socialProofData.length;
             }
         }
-        
-        // Update social proof every 8 seconds (matching CSS animation)
-        setInterval(updateSocialProof, 8000);
+
+        // Update social proof every 6 seconds to match animation
+        setInterval(updateSocialProof, 6000);
         updateSocialProof();
 
-        // ===== COUNTDOWN TIMER =====
-        function updateCountdown() {
-            const countdownElements = document.querySelectorAll('.countdown-inline');
-            const now = new Date();
-            const friday6PM = new Date();
-            friday6PM.setDate(now.getDate() + (5 - now.getDay() + 7) % 7); // Next Friday
-            friday6PM.setHours(18, 0, 0, 0);
-            
-            const distance = friday6PM - now;
-            
-            if (distance > 0) {
-                const hours = Math.floor(distance / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
-                const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                
-                countdownElements.forEach(el => {
-                    el.textContent = timeString;
-                });
-            }
-        }
-        
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        // ===== SMOOTH SCROLLING =====
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -2062,64 +1509,6 @@
                         block: 'start'
                     });
                 }
-            });
-        });
-
-        // ===== NEWSLETTER POPUP CLOSE =====
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('popup-close')) {
-                e.target.closest('.newsletter-popup').style.display = 'none';
-            }
-        });
-
-        // ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections for scroll animations
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // ===== MOBILE TOUCH IMPROVEMENTS =====
-        document.querySelectorAll('.product-carousel, .reviews-carousel').forEach(carousel => {
-            let isDown = false;
-            let startX;
-            let scrollLeft;
-
-            carousel.addEventListener('mousedown', (e) => {
-                isDown = true;
-                carousel.classList.add('active');
-                startX = e.pageX - carousel.offsetLeft;
-                scrollLeft = carousel.scrollLeft;
-            });
-
-            carousel.addEventListener('mouseleave', () => {
-                isDown = false;
-                carousel.classList.remove('active');
-            });
-
-            carousel.addEventListener('mouseup', () => {
-                isDown = false;
-                carousel.classList.remove('active');
-            });
-
-            carousel.addEventListener('mousemove', (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - carousel.offsetLeft;
-                const walk = (x - startX) * 2;
-                carousel.scrollLeft = scrollLeft - walk;
             });
         });
     </script>
