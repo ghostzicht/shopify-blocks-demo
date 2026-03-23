@@ -28,9 +28,53 @@
             padding: 0 24px;
         }
 
+        /* Global text overflow prevention */
+        * {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* ===== MOBILE HEADER ===== */
+        .mobile-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            height: 60px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000000;
+        }
+
+        .hamburger-menu {
+            width: 24px;
+            height: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .hamburger-menu span {
+            width: 100%;
+            height: 2px;
+            background: #000000;
+            border-radius: 2px;
+        }
+
         /* ===== HERO SECTION ===== */
         .hero {
-            padding: 120px 0 100px;
+            padding: 180px 0 40px;
             text-align: center;
             background: #ffffff;
             min-height: 90vh;
@@ -68,7 +112,7 @@
         .hero-cta {
             background: #000000;
             color: white;
-            padding: 18px 48px;
+            padding: 14px 24px;
             border: none;
             border-radius: 50px;
             font-size: 1.1rem;
@@ -104,7 +148,7 @@
 
         /* ===== SECTION LAYOUT ===== */
         .section {
-            padding: 100px 0;
+            padding: 80px 0;
             position: relative;
             overflow: hidden;
         }
@@ -153,6 +197,8 @@
             color: #6e6e73;
             margin-bottom: 32px;
             line-height: 1.5;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .features {
@@ -167,6 +213,8 @@
             padding-left: 32px;
             font-size: 1.1rem;
             font-weight: 500;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .features li:before {
@@ -179,8 +227,8 @@
         }
 
         .inspired-tag {
-            background: rgba(230, 57, 70, 0.1);
-            color: #E63946;
+            background: #F0F0F0;
+            color: #666;
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.9rem;
@@ -238,7 +286,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: #e0e0e0;
+            background: #c0c0c0;
         }
 
         .browser-content {
@@ -292,7 +340,8 @@
         .product-carousel {
             display: flex;
             gap: 20px;
-            padding: 20px;
+            padding: 20px 20px 20px 20px;
+            padding-right: calc(20px + 180px); /* Show ~20% of next card */
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             scrollbar-width: none;
@@ -355,7 +404,7 @@
             background: #000000;
             color: white;
             border: none;
-            padding: 10px 16px;
+            padding: 14px 24px;
             border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
@@ -748,12 +797,13 @@
         .sticky-add-btn {
             background: #000;
             color: white;
-            padding: 12px 24px;
+            padding: 14px 24px;
             border: none;
             border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
             transition: background 0.3s ease;
+            min-width: 120px;
         }
 
         .sticky-add-btn:hover {
@@ -1205,6 +1255,12 @@
         }
 
         /* ===== RESPONSIVE ===== */
+        @media (min-width: 769px) {
+            .mobile-header {
+                display: none;
+            }
+        }
+
         @media (max-width: 1024px) {
             .section-content {
                 gap: 60px;
@@ -1217,7 +1273,31 @@
             }
 
             .section {
-                padding: 60px 0;
+                padding: 48px 0;
+            }
+
+            .hero h1 {
+                font-size: 32px !important;
+            }
+
+            .section-info h2 {
+                font-size: 24px !important;
+            }
+
+            .section-info p {
+                font-size: 15px !important;
+                padding: 0 16px;
+                max-width: 100%;
+            }
+
+            .section-info h2 {
+                padding: 0 16px;
+                max-width: 100%;
+            }
+
+            .features {
+                padding: 0 16px;
+                max-width: 100%;
             }
 
             .section-content {
@@ -1267,7 +1347,8 @@
             }
 
             .product-carousel, .reviews-carousel {
-                padding: 16px;
+                padding: 16px 16px 16px 16px;
+                padding-right: calc(16px + 160px); /* Show ~20% of next card on mobile */
             }
 
             .product-card, .review-card {
@@ -1289,7 +1370,7 @@
             }
 
             .hero {
-                padding: 80px 0 60px;
+                padding: 140px 0 40px;
             }
         }
 
@@ -1309,6 +1390,16 @@
     </style>
 </head>
 <body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <div class="logo-text">ShopBlocks</div>
+        <div class="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
@@ -1326,12 +1417,12 @@
                 <div class="section-info">
                     <div class="inspired-tag">Inspired by: SNOCKS, waterdrop</div>
                     <h2>Announcement Bar Pro</h2>
-                    <p>Schaffe Aufmerksamkeit mit einer schlanken, animierten Announcement Bar die mehrere Messages rotiert.</p>
+                    <p>Create attention with a sleek, animated announcement bar that rotates multiple messages.</p>
                     <ul class="features">
-                        <li>Multi-Message Rotation mit sanften Übergängen</li>
-                        <li>Integrierter Countdown für zeitkritische Aktionen</li>
-                        <li>Minimales, professionelles Design</li>
-                        <li>Perfekt für Sales & neue Drops</li>
+                        <li>Multi-message rotation with smooth transitions</li>
+                        <li>Integrated countdown for time-critical actions</li>
+                        <li>Minimal, professional design</li>
+                        <li>Perfect for sales & new drops</li>
                     </ul>
                 </div>
                 <div class="section-demo">
@@ -1411,12 +1502,12 @@
                 <div class="section-info">
                     <div class="inspired-tag">Inspired by: Purelei, HOLY</div>
                     <h2>Product Carousel</h2>
-                    <p>Präsentiere deine Produkte in einem eleganten, scrollbaren Carousel mit Touch-Support.</p>
+                    <p>Present your products in an elegant, scrollable carousel with touch support.</p>
                     <ul class="features">
-                        <li>Horizontales Scrolling mit Scroll-Snap</li>
-                        <li>Touch- und Drag-Support für Mobile</li>
-                        <li>Responsive Produktkarten mit Hover-Effekten</li>
-                        <li>Navigations-Pfeile für bessere UX</li>
+                        <li>Horizontal scrolling with scroll-snap</li>
+                        <li>Touch and drag support for mobile</li>
+                        <li>Responsive product cards with hover effects</li>
+                        <li>Navigation arrows for better UX</li>
                     </ul>
                 </div>
             </div>
@@ -1430,12 +1521,12 @@
                 <div class="section-info">
                     <div class="inspired-tag">Inspired by: JUNGLÜCK, Purelei</div>
                     <h2>Newsletter Popup</h2>
-                    <p>Sammle E-Mails mit einem eleganten Modal das zur richtigen Zeit erscheint und konvertiert.</p>
+                    <p>Collect emails with an elegant modal that appears at the right time and converts.</p>
                     <ul class="features">
-                        <li>Zeitgesteuerte Anzeige nach Scroll-Verhalten</li>
-                        <li>Responsive Split-Layout mit Bild</li>
-                        <li>Einfach schließbar mit X oder Backdrop-Click</li>
-                        <li>Optimiert für mobile Endgeräte</li>
+                        <li>Time-controlled display based on scroll behavior</li>
+                        <li>Responsive split-layout with image</li>
+                        <li>Easy to close with X or backdrop click</li>
+                        <li>Optimized for mobile devices</li>
                     </ul>
                 </div>
                 <div class="section-demo">
@@ -1478,7 +1569,7 @@
                                 <div class="reviews-carousel">
                                     <div class="review-card">
                                         <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                                        <div class="review-text">"Absolute Qualität! Die Lieferung war super schnell und das Produkt übertrifft alle Erwartungen."</div>
+                                        <div class="review-text">"Absolute quality! Delivery was super fast and the product exceeds all expectations."</div>
                                         <div class="reviewer-info">
                                             <div class="reviewer-avatar">👨</div>
                                             <div class="reviewer-details">
@@ -1489,7 +1580,7 @@
                                     </div>
                                     <div class="review-card">
                                         <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                                        <div class="review-text">"Ich bestelle regelmäßig hier. Service ist top und die Qualität stimmt einfach immer!"</div>
+                                        <div class="review-text">"I order here regularly. Service is top and the quality is always perfect!"</div>
                                         <div class="reviewer-info">
                                             <div class="reviewer-avatar">👩</div>
                                             <div class="reviewer-details">
@@ -1500,7 +1591,7 @@
                                     </div>
                                     <div class="review-card">
                                         <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                                        <div class="review-text">"Perfekte Passform und das Material fühlt sich sehr hochwertig an. Definitiv weiterempfehlenswert!"</div>
+                                        <div class="review-text">"Perfect fit and the material feels very high quality. Definitely recommend!"</div>
                                         <div class="reviewer-info">
                                             <div class="reviewer-avatar">👨</div>
                                             <div class="reviewer-details">
@@ -1511,7 +1602,7 @@
                                     </div>
                                     <div class="review-card">
                                         <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                                        <div class="review-text">"Bin mega zufrieden mit meiner Bestellung. Alles perfekt verpackt und schnell geliefert."</div>
+                                        <div class="review-text">"Super satisfied with my order. Everything perfectly packed and delivered quickly."</div>
                                         <div class="reviewer-info">
                                             <div class="reviewer-avatar">👩</div>
                                             <div class="reviewer-details">
@@ -1522,7 +1613,7 @@
                                     </div>
                                     <div class="review-card">
                                         <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                                        <div class="review-text">"Beste Entscheidung! Die Produkte halten was sie versprechen und der Kundenservice ist fantastisch."</div>
+                                        <div class="review-text">"Best decision! The products deliver what they promise and the customer service is fantastic."</div>
                                         <div class="reviewer-info">
                                             <div class="reviewer-avatar">👨</div>
                                             <div class="reviewer-details">
@@ -1539,12 +1630,12 @@
                 <div class="section-info">
                     <div class="inspired-tag">Inspired by: Gymshark, SNOCKS</div>
                     <h2>Reviews Carousel</h2>
-                    <p>Baue Vertrauen auf mit echten Kundenbewertungen in einem eleganten Carousel-Format.</p>
+                    <p>Build trust with authentic customer reviews in an elegant carousel format.</p>
                     <ul class="features">
-                        <li>5-Sterne Bewertungssystem mit Trust Score</li>
-                        <li>Scrollbare Review-Karten mit Avataren</li>
-                        <li>"Verified Buyer" Badges für Authentizität</li>
-                        <li>Auto-scrolling und Touch-Support</li>
+                        <li>5-star rating system with trust score</li>
+                        <li>Scrollable review cards with avatars</li>
+                        <li>"Verified Buyer" badges for authenticity</li>
+                        <li>Auto-scrolling and touch support</li>
                     </ul>
                 </div>
             </div>
@@ -1558,12 +1649,12 @@
                 <div class="section-info">
                     <div class="inspired-tag">Inspired by: SNOCKS, waterdrop</div>
                     <h2>Video Hero Section</h2>
-                    <p>Begeistere deine Besucher mit einer cineastischen Video Hero Section mit Parallax-Effekten.</p>
+                    <p>Impress your visitors with a cinematic video hero section with parallax effects.</p>
                     <ul class="features">
-                        <li>Animierter Play-Button mit Pulse-Effekt</li>
-                        <li>Gradient-Overlay für bessere Lesbarkeit</li>
-                        <li>Responsive Video-Container</li>
-                        <li>Call-to-Action Integration im Overlay</li>
+                        <li>Animated play button with pulse effect</li>
+                        <li>Gradient overlay for better readability</li>
+                        <li>Responsive video container</li>
+                        <li>Call-to-action integration in overlay</li>
                     </ul>
                 </div>
                 <div class="section-demo">
@@ -1614,12 +1705,12 @@
                 <div class="section-info">
                     <div class="inspired-tag">Inspired by: waterdrop, JUNGLÜCK</div>
                     <h2>Sticky Add-to-Cart Bar</h2>
-                    <p>Erhöhe deine Conversion Rate mit einer sticky Bar die beim Scrollen erscheint und immer verfügbar bleibt.</p>
+                    <p>Increase your conversion rate with a sticky bar that appears when scrolling and stays available.</p>
                     <ul class="features">
-                        <li>Erscheint automatisch beim Runterscrollen</li>
-                        <li>Integrierte Varianten-Auswahl</li>
-                        <li>Smooth Slide-Up Animation</li>
-                        <li>Kompaktes Design für Mobile optimiert</li>
+                        <li>Appears automatically when scrolling down</li>
+                        <li>Integrated variant selection</li>
+                        <li>Smooth slide-up animation</li>
+                        <li>Compact design optimized for mobile</li>
                     </ul>
                 </div>
             </div>
@@ -1633,12 +1724,12 @@
                 <div class="section-info">
                     <div class="inspired-tag">Inspired by: waterdrop, Ankerkraut</div>
                     <h2>Trust Badge Bar</h2>
-                    <p>Schaffe sofortiges Vertrauen mit einer minimalistischen Badge Bar die deine USPs hervorhebt.</p>
+                    <p>Create instant trust with a minimalist badge bar that highlights your USPs.</p>
                     <ul class="features">
-                        <li>4 wichtige Trust-Badges in einer Reihe</li>
-                        <li>Responsive Grid (2x2 auf Mobile)</li>
-                        <li>Minimalistisches Icon-Design</li>
-                        <li>Keine Animationen für optimale Performance</li>
+                        <li>4 important trust badges in a row</li>
+                        <li>Responsive grid (2x2 on mobile)</li>
+                        <li>Minimalist icon design</li>
+                        <li>No animations for optimal performance</li>
                     </ul>
                 </div>
                 <div class="section-demo">
@@ -1678,9 +1769,9 @@
                                 <div class="toast-product-thumb">👕</div>
                                 <div class="toast-content">
                                     <div class="toast-text">
-                                        <span class="toast-buyer">Anna aus München</span> <span class="toast-action">hat gerade 'Classic Tee' gekauft</span>
+                                        <span class="toast-buyer">Anna from Munich</span> <span class="toast-action">just bought 'Classic Tee'</span>
                                     </div>
-                                    <div class="toast-time">vor 3 Min.</div>
+                                    <div class="toast-time">3 min ago</div>
                                 </div>
                             </div>
                         </div>
@@ -1689,12 +1780,12 @@
                 <div class="section-info">
                     <div class="inspired-tag">Inspired by: Ankerkraut</div>
                     <h2>Social Proof Toast</h2>
-                    <p>Schaffe FOMO und Social Proof mit diskret animierten Kauf-Benachrichtigungen.</p>
+                    <p>Create FOMO and social proof with discretely animated purchase notifications.</p>
                     <ul class="features">
-                        <li>Auto-rotation durch verschiedene Fake-Käufe</li>
-                        <li>Smooth Slide-in/out Animationen</li>
-                        <li>Kleines, unaufdringliches Design</li>
-                        <li>Anpassbare Namen, Städte und Produkte</li>
+                        <li>Auto-rotation through different purchase notifications</li>
+                        <li>Smooth slide-in/out animations</li>
+                        <li>Small, unobtrusive design</li>
+                        <li>Customizable names, cities and products</li>
                     </ul>
                 </div>
             </div>
@@ -1708,12 +1799,12 @@
                 <div class="section-info">
                     <div class="inspired-tag">Inspired by: HOLY, waterdrop</div>
                     <h2>Mega Menu</h2>
-                    <p>Organisiere deine Navigation mit einem professionellen Mega Menu mit Featured Products.</p>
+                    <p>Organize your navigation with a professional mega menu featuring products.</p>
                     <ul class="features">
-                        <li>3-spaltige Layout mit Kategorien</li>
-                        <li>Featured Product Integration</li>
-                        <li>Smooth Open/Close Animationen</li>
-                        <li>Responsive für alle Bildschirmgrößen</li>
+                        <li>3-column layout with categories</li>
+                        <li>Featured product integration</li>
+                        <li>Smooth open/close animations</li>
+                        <li>Responsive for all screen sizes</li>
                     </ul>
                 </div>
                 <div class="section-demo">
@@ -1729,17 +1820,17 @@
                                     <button class="menu-trigger">Shop All ▼</button>
                                     <div class="mega-dropdown">
                                         <div class="menu-column">
-                                            <h4>Kategorien</h4>
+                                            <h4>Categories</h4>
                                             <ul class="menu-links">
                                                 <li><a href="#">T-Shirts</a></li>
                                                 <li><a href="#">Hoodies</a></li>
-                                                <li><a href="#">Hosen</a></li>
-                                                <li><a href="#">Accessoires</a></li>
+                                                <li><a href="#">Pants</a></li>
+                                                <li><a href="#">Accessories</a></li>
                                                 <li><a href="#">Sale</a></li>
                                             </ul>
                                         </div>
                                         <div class="menu-column">
-                                            <h4>Unterkategorien</h4>
+                                            <h4>Subcategories</h4>
                                             <ul class="menu-links">
                                                 <li><a href="#">Basic Tees</a></li>
                                                 <li><a href="#">Premium Tees</a></li>
@@ -1773,47 +1864,47 @@
                         <div class="faq-container">
                             <div class="faq-item">
                                 <button class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Wie lange dauert der Versand?</span>
+                                    <span>How long does shipping take?</span>
                                     <span class="faq-icon">+</span>
                                 </button>
                                 <div class="faq-answer">
-                                    <p>Wir versenden alle Bestellungen innerhalb von 1-2 Werktagen. Der Versand dauert in der Regel 2-3 Werktage innerhalb Deutschlands.</p>
+                                    <p>We ship all orders within 1-2 business days. Shipping typically takes 2-3 business days within Germany.</p>
                                 </div>
                             </div>
                             <div class="faq-item">
                                 <button class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Kann ich meine Bestellung umtauschen?</span>
+                                    <span>Can I exchange my order?</span>
                                     <span class="faq-icon">+</span>
                                 </button>
                                 <div class="faq-answer">
-                                    <p>Ja, du hast 30 Tage Zeit um deine Bestellung kostenlos zu retournieren oder umzutauschen.</p>
+                                    <p>Yes, you have 30 days to return or exchange your order for free.</p>
                                 </div>
                             </div>
                             <div class="faq-item">
                                 <button class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Welche Zahlungsmethoden akzeptiert ihr?</span>
+                                    <span>Which payment methods do you accept?</span>
                                     <span class="faq-icon">+</span>
                                 </button>
                                 <div class="faq-answer">
-                                    <p>Wir akzeptieren alle gängigen Zahlungsmethoden: PayPal, Klarna, Kreditkarte und SEPA-Lastschrift.</p>
+                                    <p>We accept all common payment methods: PayPal, Klarna, credit card and SEPA direct debit.</p>
                                 </div>
                             </div>
                             <div class="faq-item">
                                 <button class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Wie fällt die Größe aus?</span>
+                                    <span>How does the sizing run?</span>
                                     <span class="faq-icon">+</span>
                                 </button>
                                 <div class="faq-answer">
-                                    <p>Unsere Größen fallen normal aus. Du findest eine detaillierte Größentabelle auf jeder Produktseite.</p>
+                                    <p>Our sizes run true to fit. You can find a detailed size chart on each product page.</p>
                                 </div>
                             </div>
                             <div class="faq-item">
                                 <button class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Bietet ihr kostenlosen Versand an?</span>
+                                    <span>Do you offer free shipping?</span>
                                     <span class="faq-icon">+</span>
                                 </button>
                                 <div class="faq-answer">
-                                    <p>Ja! Ab einem Bestellwert von 50€ versenden wir kostenlos innerhalb Deutschlands.</p>
+                                    <p>Yes! We offer free shipping within Germany for orders over €50.</p>
                                 </div>
                             </div>
                         </div>
@@ -1822,12 +1913,12 @@
                 <div class="section-info">
                     <div class="inspired-tag">Inspired by: All D2C Brands</div>
                     <h2>FAQ Accordion</h2>
-                    <p>Beantworte häufige Fragen elegant mit einem interaktiven Accordion-System.</p>
+                    <p>Answer common questions elegantly with an interactive accordion system.</p>
                     <ul class="features">
-                        <li>5 vordefinierte Standard-Fragen</li>
-                        <li>Smooth Open/Close Animationen</li>
-                        <li>Nur eine Frage gleichzeitig offen</li>
-                        <li>Plus/Minus Icon Transformation</li>
+                        <li>5 predefined standard questions</li>
+                        <li>Smooth open/close animations</li>
+                        <li>Only one question open at a time</li>
+                        <li>Plus/minus icon transformation</li>
                     </ul>
                 </div>
             </div>
@@ -1908,11 +1999,11 @@
 
         // ===== SOCIAL PROOF ROTATION =====
         const socialProofData = [
-            { name: "Anna aus München", product: "Classic Tee", time: "vor 3 Min." },
-            { name: "Max aus Berlin", product: "Premium Hoodie", time: "vor 7 Min." },
-            { name: "Lisa aus Hamburg", product: "Vintage Cap", time: "vor 12 Min." },
-            { name: "Tom aus Köln", product: "Essential Pack", time: "vor 18 Min." },
-            { name: "Sarah aus Frankfurt", product: "Sport Sneakers", time: "vor 25 Min." }
+            { name: "Anna from Munich", product: "Classic Tee", time: "3 min ago" },
+            { name: "Max from Berlin", product: "Premium Hoodie", time: "7 min ago" },
+            { name: "Lisa from Hamburg", product: "Vintage Cap", time: "12 min ago" },
+            { name: "Tom from Cologne", product: "Essential Pack", time: "18 min ago" },
+            { name: "Sarah from Frankfurt", product: "Sport Sneakers", time: "25 min ago" }
         ];
         
         let currentProofIndex = 0;
@@ -1923,7 +2014,7 @@
             
             if (toast) {
                 toast.querySelector('.toast-buyer').textContent = data.name;
-                toast.querySelector('.toast-action').textContent = `hat gerade '${data.product}' gekauft`;
+                toast.querySelector('.toast-action').textContent = `just bought '${data.product}'`;
                 toast.querySelector('.toast-time').textContent = data.time;
                 
                 currentProofIndex = (currentProofIndex + 1) % socialProofData.length;
