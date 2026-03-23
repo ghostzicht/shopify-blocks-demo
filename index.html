@@ -19,6 +19,7 @@
             --text-secondary: #6e6e73;
             --accent: #E63946;
             --black: #000000;
+            --dark-gray: #111111;
             --section-padding-mobile: 48px;
             --section-padding-desktop: 80px;
         }
@@ -69,7 +70,7 @@
 
         /* ===== HERO SECTION ===== */
         .hero {
-            padding: 80px 16px 48px;
+            padding: 80px 16px 32px;
             text-align: center;
             background: var(--bg-white);
         }
@@ -89,10 +90,10 @@
             line-height: 1.4;
         }
 
-        .hero-social-proof {
+        .hero-cta-text {
             font-size: 15px;
             color: var(--text-secondary);
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
 
         .hero-cta {
@@ -105,7 +106,7 @@
             font-weight: 600;
             text-decoration: none;
             display: inline-block;
-            transition: opacity 0.2s;
+            transition: opacity 0.2s ease;
         }
 
         .hero-cta:hover {
@@ -194,7 +195,7 @@
 
         /* ===== BLOCK 1: ANNOUNCEMENT BAR ===== */
         .announcement-bar {
-            background: var(--black);
+            background: var(--dark-gray);
             color: white;
             padding: 12px 16px;
             text-align: center;
@@ -254,21 +255,28 @@
             flex: 0 0 240px;
             background: var(--bg-white);
             border-radius: 12px;
-            padding: 16px;
+            overflow: hidden;
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
             scroll-snap-align: start;
+            transition: transform 0.2s ease;
+        }
+
+        .product-card:hover {
+            transform: scale(1.02);
         }
 
         .product-image {
             width: 100%;
-            height: 160px;
-            background: linear-gradient(135deg, #ff6b7a, #E63946);
-            border-radius: 8px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 12px 12px 0 0;
+            margin-bottom: 0;
+        }
+
+        .product-info {
+            padding: 16px;
         }
 
         .product-name {
@@ -295,6 +303,11 @@
             font-weight: 600;
             width: 100%;
             cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            opacity: 0.9;
         }
 
         /* ===== BLOCK 3: NEWSLETTER POPUP ===== */
@@ -319,13 +332,20 @@
 
         .popup-image-area {
             flex: 1;
-            background: linear-gradient(135deg, #ff6b7a, #E63946);
-            padding: 40px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            color: white;
+            background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&h=600&fit=crop');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .popup-image-area:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6));
         }
 
         .popup-content {
@@ -365,6 +385,7 @@
             font-size: 14px;
             font-weight: 600;
             width: 100%;
+            cursor: pointer;
         }
 
         /* ===== BLOCK 4: REVIEWS CAROUSEL ===== */
@@ -441,14 +462,12 @@
         }
 
         .reviewer-avatar {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #ff6b7a, #E63946);
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
         }
 
         .reviewer-name {
@@ -466,41 +485,51 @@
         .video-hero {
             position: relative;
             height: 250px;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=600&fit=crop');
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .video-hero:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
         }
 
         .play-button {
             width: 60px;
             height: 60px;
             background: rgba(255, 255, 255, 0.9);
-            border: none;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
             cursor: pointer;
             position: relative;
+            z-index: 2;
+            transition: transform 0.2s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
         }
 
         .play-button:before {
             content: '';
-            position: absolute;
-            top: -8px;
-            left: -8px;
-            right: -8px;
-            bottom: -8px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.2); opacity: 0; }
+            width: 0;
+            height: 0;
+            border-left: 16px solid var(--black);
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            margin-left: 4px;
         }
 
         .video-overlay {
@@ -508,6 +537,7 @@
             bottom: 20px;
             left: 20px;
             color: white;
+            z-index: 2;
         }
 
         .video-title {
@@ -524,6 +554,7 @@
             border-radius: 4px;
             font-size: 14px;
             font-weight: 600;
+            cursor: pointer;
         }
 
         /* ===== BLOCK 6: STICKY ADD TO CART ===== */
@@ -544,6 +575,16 @@
             display: flex;
             align-items: center;
             gap: 12px;
+        }
+
+        .sticky-product-image {
+            width: 40px;
+            height: 40px;
+            background-image: url('https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=500&fit=crop');
+            background-size: cover;
+            background-position: center;
+            border-radius: 6px;
+            flex-shrink: 0;
         }
 
         .sticky-product-info {
@@ -577,6 +618,7 @@
             border-radius: 6px;
             font-size: 14px;
             font-weight: 600;
+            cursor: pointer;
         }
 
         /* ===== BLOCK 7: TRUST BADGES ===== */
@@ -596,7 +638,7 @@
         }
 
         .badge-icon {
-            font-size: 24px;
+            font-size: 28px;
             margin-bottom: 8px;
             display: block;
         }
@@ -640,12 +682,18 @@
         .toast-avatar {
             width: 32px;
             height: 32px;
-            background: linear-gradient(135deg, #ff6b7a, #E63946);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+        }
+
+        .toast-product-image {
+            width: 24px;
+            height: 24px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
             flex-shrink: 0;
         }
 
@@ -711,6 +759,7 @@
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
+            transition: color 0.2s ease;
         }
 
         .menu-links a:hover {
@@ -722,18 +771,30 @@
             padding: 16px;
             border-radius: 8px;
             text-align: center;
+            position: relative;
+        }
+
+        .new-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: var(--accent);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .featured-image {
             width: 100%;
             height: 80px;
-            background: linear-gradient(135deg, #ff6b7a, #E63946);
+            background-image: url('https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=500&fit=crop');
+            background-size: cover;
+            background-position: center;
             border-radius: 6px;
             margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
         }
 
         .featured-title {
@@ -834,6 +895,18 @@
         .pricing-subtitle {
             font-size: 17px;
             color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .pricing-features {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .pricing-guarantee {
+            font-size: 14px;
+            color: var(--text-secondary);
             margin-bottom: 40px;
         }
 
@@ -850,11 +923,17 @@
             border-radius: 16px;
             padding: 32px 24px;
             position: relative;
+            transition: transform 0.2s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
         }
 
         .pricing-card.popular {
             border-color: var(--accent);
             background: linear-gradient(135deg, #fff, #fff5f5);
+            transform: scale(1.05);
         }
 
         .popular-badge {
@@ -900,6 +979,12 @@
             font-size: 16px;
             font-weight: 600;
             width: 100%;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .plan-cta:hover {
+            opacity: 0.9;
         }
 
         .pricing-card.popular .plan-cta {
@@ -950,7 +1035,7 @@
             }
 
             .hero {
-                padding: 120px 40px 80px;
+                padding: 120px 40px 60px;
             }
 
             .hero h1 {
@@ -979,6 +1064,10 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 32px;
             }
+
+            .menu-column {
+                margin-bottom: 0;
+            }
         }
     </style>
 </head>
@@ -996,8 +1085,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <h1>Premium Shopify<br>Sections</h1>
-        <p class="hero-subtitle">Inspired by Germany's top D2C brands.<br>Works with any OS 2.0 theme.</p>
-        <p class="hero-social-proof">Trusted by 200+ Shopify stores</p>
+        <p class="hero-subtitle">Premium Shopify sections inspired by Germany's top D2C brands</p>
+        <p class="hero-cta-text">See them in action ↓</p>
         <a href="#sections" class="hero-cta">Browse Sections →</a>
     </section>
 
@@ -1019,7 +1108,7 @@
             </div>
             <div class="live-preview">
                 <div class="announcement-bar">
-                    <div class="announcement-text">FREE SHIPPING OVER 50€</div>
+                    <div class="announcement-text">FREE SHIPPING OVER €50</div>
                     <div class="announcement-text">NEW DROP FRIDAY</div>
                     <div class="announcement-text">EASY RETURNS</div>
                 </div>
@@ -1034,28 +1123,36 @@
                 <div class="product-carousel-container">
                     <div class="product-carousel">
                         <div class="product-card">
-                            <div class="product-image">👕</div>
-                            <div class="product-name">Essential Tee</div>
-                            <div class="product-price">€29.99</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=500&fit=crop'); border-radius: 12px; object-fit: cover;" loading="lazy"></div>
+                            <div class="product-info">
+                                <div class="product-name">Essential Oversized Tee</div>
+                                <div class="product-price">€34.99</div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
                         </div>
                         <div class="product-card">
-                            <div class="product-image">👔</div>
-                            <div class="product-name">Premium Hoodie</div>
-                            <div class="product-price">€79.99</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=500&fit=crop'); border-radius: 12px; object-fit: cover;" loading="lazy"></div>
+                            <div class="product-info">
+                                <div class="product-name">Heavyweight Hoodie</div>
+                                <div class="product-price">€59.99</div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
                         </div>
                         <div class="product-card">
-                            <div class="product-image">🧢</div>
-                            <div class="product-name">Vintage Cap</div>
-                            <div class="product-price">€24.99</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=500&fit=crop'); border-radius: 12px; object-fit: cover;" loading="lazy"></div>
+                            <div class="product-info">
+                                <div class="product-name">Vintage Wash Tee</div>
+                                <div class="product-price">€29.99</div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
                         </div>
                         <div class="product-card">
-                            <div class="product-image">👖</div>
-                            <div class="product-name">Classic Jeans</div>
-                            <div class="product-price">€89.99</div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&h=500&fit=crop'); border-radius: 12px; object-fit: cover;" loading="lazy"></div>
+                            <div class="product-info">
+                                <div class="product-name">Relaxed Crew</div>
+                                <div class="product-price">€44.99</div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1095,10 +1192,10 @@
             <div class="live-preview">
                 <div class="newsletter-preview">
                     <div class="newsletter-popup">
-                        <div class="popup-image-area">🎁</div>
+                        <div class="popup-image-area"></div>
                         <div class="popup-content">
-                            <h3 class="popup-title">Get 10% off</h3>
-                            <p class="popup-subtitle">Join our newsletter for exclusive deals and updates.</p>
+                            <h3 class="popup-title">Join the NVRLND crew</h3>
+                            <p class="popup-subtitle">Get 10% off your first order</p>
                             <input type="email" class="email-input" placeholder="Enter email">
                             <button class="submit-btn">Get Discount</button>
                         </div>
@@ -1119,9 +1216,9 @@
                     <div class="reviews-carousel">
                         <div class="review-card">
                             <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                            <p class="review-text">"Great quality, fits perfectly! Definitely ordering again."</p>
+                            <p class="review-text">"The quality is insane. Best tee I've ever owned."</p>
                             <div class="reviewer-info">
-                                <div class="reviewer-avatar">👩</div>
+                                <div class="reviewer-avatar" style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face');" loading="lazy"></div>
                                 <div>
                                     <div class="reviewer-name">Anna M.</div>
                                     <div class="verified-badge">✓ Verified Buyer</div>
@@ -1130,9 +1227,9 @@
                         </div>
                         <div class="review-card">
                             <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                            <p class="review-text">"Fast shipping and amazing customer service. Highly recommend!"</p>
+                            <p class="review-text">"Fast shipping, perfect fit. Will order again!"</p>
                             <div class="reviewer-info">
-                                <div class="reviewer-avatar">👨</div>
+                                <div class="reviewer-avatar" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face');" loading="lazy"></div>
                                 <div>
                                     <div class="reviewer-name">Max K.</div>
                                     <div class="verified-badge">✓ Verified Buyer</div>
@@ -1141,11 +1238,33 @@
                         </div>
                         <div class="review-card">
                             <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                            <p class="review-text">"Perfect material and the fit is exactly as expected."</p>
+                            <p class="review-text">"My go-to brand now. The heavyweight fabric is 🔥"</p>
                             <div class="reviewer-info">
-                                <div class="reviewer-avatar">👩</div>
+                                <div class="reviewer-avatar" style="background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face');" loading="lazy"></div>
                                 <div>
-                                    <div class="reviewer-name">Lisa B.</div>
+                                    <div class="reviewer-name">Lisa R.</div>
+                                    <div class="verified-badge">✓ Verified Buyer</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                            <p class="review-text">"Exceeded expectations. Premium quality."</p>
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar" style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face');" loading="lazy"></div>
+                                <div>
+                                    <div class="reviewer-name">Tom B.</div>
+                                    <div class="verified-badge">✓ Verified Buyer</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                            <p class="review-text">"Size guide was spot-on. Love the oversized fit."</p>
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop&crop=face');" loading="lazy"></div>
+                                <div>
+                                    <div class="reviewer-name">Sarah W.</div>
                                     <div class="verified-badge">✓ Verified Buyer</div>
                                 </div>
                             </div>
@@ -1187,7 +1306,7 @@
             </div>
             <div class="live-preview">
                 <div class="video-hero">
-                    <button class="play-button">▶</button>
+                    <button class="play-button"></button>
                     <div class="video-overlay">
                         <h3 class="video-title">Your Story. Your Style.</h3>
                         <button class="video-cta">Shop Now</button>
@@ -1203,14 +1322,16 @@
             <div class="live-preview">
                 <div class="sticky-demo">
                     <div class="sticky-bar">
+                        <div class="sticky-product-image"></div>
                         <div class="sticky-product-info">
-                            <div class="sticky-product-name">Essential Tee</div>
+                            <div class="sticky-product-name">Essential Oversized Tee</div>
                             <div class="sticky-price">€34.99</div>
                         </div>
                         <select class="size-dropdown">
-                            <option>Size: M</option>
-                            <option>Size: L</option>
-                            <option>Size: XL</option>
+                            <option>S</option>
+                            <option selected>M</option>
+                            <option>L</option>
+                            <option>XL</option>
                         </select>
                         <button class="sticky-add-btn">Add to Cart</button>
                     </div>
@@ -1279,9 +1400,10 @@
             <div class="live-preview">
                 <div class="toast-demo">
                     <div class="toast-notification">
-                        <div class="toast-avatar">👕</div>
+                        <div class="toast-avatar" style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face');" loading="lazy"></div>
+                        <div class="toast-product-image" style="background-image: url('https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=500&fit=crop');" loading="lazy"></div>
                         <div class="toast-content">
-                            <div><span class="buyer-name">Max from Berlin</span> just bought 'Classic Tee'</div>
+                            <div><span class="buyer-name">Anna from Berlin</span> just bought 'Heavyweight Hoodie'</div>
                             <div class="purchase-time">3 min ago</div>
                         </div>
                     </div>
@@ -1328,24 +1450,26 @@
                             <ul class="menu-links">
                                 <li><a href="#">T-Shirts</a></li>
                                 <li><a href="#">Hoodies</a></li>
+                                <li><a href="#">Sweatshirts</a></li>
+                                <li><a href="#">Pants</a></li>
                                 <li><a href="#">Accessories</a></li>
-                                <li><a href="#">Sale</a></li>
                             </ul>
                         </div>
                         <div class="menu-column">
-                            <h4 class="column-title">Subcategories</h4>
+                            <h4 class="column-title">Collections</h4>
                             <ul class="menu-links">
-                                <li><a href="#">Basic Tees</a></li>
-                                <li><a href="#">Premium Tees</a></li>
-                                <li><a href="#">Vintage Collection</a></li>
-                                <li><a href="#">Limited Edition</a></li>
+                                <li><a href="#">New Arrivals</a></li>
+                                <li><a href="#">Best Sellers</a></li>
+                                <li><a href="#">Sale</a></li>
+                                <li><a href="#">Collabs</a></li>
                             </ul>
                         </div>
                         <div class="menu-column">
                             <div class="featured-product">
-                                <div class="featured-image">👕</div>
-                                <div class="featured-title">Essential Pack</div>
-                                <div class="featured-price">€49.99</div>
+                                <div class="new-badge">NEW</div>
+                                <div class="featured-image"></div>
+                                <div class="featured-title">Heavyweight Hoodie</div>
+                                <div class="featured-price">€59.99</div>
                             </div>
                         </div>
                     </div>
@@ -1361,45 +1485,45 @@
                 <div class="faq-container">
                     <div class="faq-item">
                         <button class="faq-question" onclick="toggleFAQ(this)">
-                            <span>How long does shipping take?</span>
+                            <span>What is your shipping policy?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-content">
-                                We ship all orders within 1-2 business days. Delivery typically takes 2-3 business days within Germany.
+                                We offer free shipping on orders over €50 within Germany. All orders are processed within 1-2 business days and typically delivered within 2-3 business days.
                             </div>
                         </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question" onclick="toggleFAQ(this)">
-                            <span>Can I exchange my order?</span>
+                            <span>How do I find my size?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-content">
-                                Yes, you have 30 days to return or exchange your order for free.
+                                Check our detailed size guide on each product page. We recommend measuring your favorite fitting garment and comparing it to our measurements.
                             </div>
                         </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question" onclick="toggleFAQ(this)">
-                            <span>Which payment methods do you accept?</span>
+                            <span>Can I return or exchange?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-content">
-                                We accept PayPal, Klarna, credit cards, and SEPA direct debit.
+                                Yes, we offer free returns and exchanges within 30 days of purchase. Items must be unworn and in original condition with tags attached.
                             </div>
                         </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question" onclick="toggleFAQ(this)">
-                            <span>Do you offer free shipping?</span>
+                            <span>What printing method do you use?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-content">
-                                Yes! We offer free shipping within Germany for orders over €50.
+                                We use high-quality DTG (Direct-to-Garment) printing for vibrant colors and long-lasting designs that won't crack or fade after washing.
                             </div>
                         </div>
                     </div>
@@ -1424,7 +1548,8 @@
     <!-- Pricing Section -->
     <section class="pricing">
         <h2>Simple Pricing</h2>
-        <p class="pricing-subtitle">One-time payment. No subscription.</p>
+        <p class="pricing-subtitle">One-time purchase · Free updates · No subscription</p>
+        <p class="pricing-features">30-day money-back guarantee</p>
         <div class="pricing-grid">
             <div class="pricing-card">
                 <div class="plan-name">STARTER</div>
@@ -1473,22 +1598,43 @@
 
         // Social Proof Toast data rotation
         const socialProofData = [
-            { name: "Max from Berlin", product: "Classic Tee", time: "3 min ago" },
-            { name: "Anna from Munich", product: "Premium Hoodie", time: "7 min ago" },
-            { name: "Lisa from Hamburg", product: "Vintage Cap", time: "12 min ago" },
-            { name: "Tom from Cologne", product: "Essential Pack", time: "18 min ago" }
+            { 
+                name: "Anna from Berlin", 
+                product: "Heavyweight Hoodie", 
+                time: "3 min ago",
+                avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face",
+                productImage: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=500&fit=crop"
+            },
+            { 
+                name: "Max from Munich", 
+                product: "Vintage Wash Tee", 
+                time: "7 min ago",
+                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
+                productImage: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=500&fit=crop"
+            },
+            { 
+                name: "Lisa from Hamburg", 
+                product: "Essential Oversized Tee", 
+                time: "12 min ago",
+                avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
+                productImage: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=500&fit=crop"
+            }
         ];
 
         let currentProofIndex = 0;
 
         function updateSocialProof() {
-            const toastContent = document.querySelector('.toast-notification .toast-content');
+            const toastNotification = document.querySelector('.toast-notification');
             const data = socialProofData[currentProofIndex];
             
-            if (toastContent) {
-                toastContent.innerHTML = `
-                    <div><span class="buyer-name">${data.name}</span> just bought '${data.product}'</div>
-                    <div class="purchase-time">${data.time}</div>
+            if (toastNotification) {
+                toastNotification.innerHTML = `
+                    <div class="toast-avatar" style="background-image: url('${data.avatar}'); background-size: cover; background-position: center;" loading="lazy"></div>
+                    <div class="toast-product-image" style="background-image: url('${data.productImage}'); background-size: cover; background-position: center;" loading="lazy"></div>
+                    <div class="toast-content">
+                        <div><span class="buyer-name">${data.name}</span> just bought '${data.product}'</div>
+                        <div class="purchase-time">${data.time}</div>
+                    </div>
                 `;
                 currentProofIndex = (currentProofIndex + 1) % socialProofData.length;
             }
